@@ -39,3 +39,7 @@ scale = Vector2(5.69192, 0.0517439)
 theme_override_styles/background = SubResource("StyleBoxFlat_p1rro")
 theme_override_styles/fill = SubResource("StyleBoxFlat_7rwnq")
 show_percentage = false
+
+[node name="movement" type="Timer" parent="."]
+
+[connection signal="timeout" from="movement" to="." method="_on_movement_timeout"]

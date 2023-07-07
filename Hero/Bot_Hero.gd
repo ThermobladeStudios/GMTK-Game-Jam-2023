@@ -8,10 +8,9 @@ extends Area2D
 #
 #@onready var animation_tree = $AnimationTree
 #@onready var state_machine = animation_tree.get("parameters/playback")
-@onready var state = 0
 #0 is idle 1 is walking 2 is attacking
-
-
+var new_velocity : Vector2
+@onready var currPos = self.position
 @export var movement_target: Node2D
 @export var navigation_agent: NavigationAgent2D
 
@@ -19,7 +18,7 @@ func _ready():
 	navigation_agent.path_desired_distance = 10.0
 	navigation_agent.target_desired_distance = 50.0
 	
-
+	$movement.start(0.5)
 	
 	$ProgressBar.max_value = HEALTH
 	
@@ -35,22 +34,43 @@ func _physics_process(delta):
 	
 	var current_agent_position: Vector2 = global_position
 	var next_path_position: Vector2 = navigation_agent.get_next_path_position()
-	var new_velocity: Vector2 = next_path_position - current_agent_position
+	new_velocity = next_path_position - current_agent_position
 	new_velocity = new_velocity.normalized()
-	position += new_velocity*16
+	new_velocity = new_velocity.round()
 
-#	pick_new_state()
-#	update_animation_parameters(new_velocity)
+
+
+
 	
-	
+func movement(new_velocity):
+	if(new_velocity[1] == -1): 
+		print("Up")
+		currPos[1] -=16
+	elif(new_velocity[1] == 1):
+		print("Down")
+		currPos[1] +=16
+	elif(new_velocity[0] == -1):
+		print("Left")
+		currPos[0] -=16
+	elif(new_velocity[0] == 1):
+		print("right")
+		currPos[0] +=16
+	self.position = Vector2(currPos[0], currPos[1])
 func actor_setup():
-	#await get_tree().physics_frame
+	await get_tree().physics_frame
 	set_movement_target(movement_target.position)
 
 
 func set_movement_target(target_point: Vector2):
 	navigation_agent.target_position = target_point
 	
+
+
+
+
+
+func _on_movement_timeout():
+	movement(new_velocity)
 
 
 #func update_animation_parameters(move_input : Vector2):	
@@ -63,18 +83,3 @@ func set_movement_target(target_point: Vector2):
 #		state_machine.travel("Walk")
 #	elif(state == 2):
 #		state_machine.travel("Attack")
-
-
-
-
-func _on_spawn_timeout():
-	state = 1
-
-
-func _on_area_2d_body_entered(body):
-	if(body.name == "Player"):
-		state = 2
-
-
-func _on_area_2d_body_exited(body):
-	state = 1
