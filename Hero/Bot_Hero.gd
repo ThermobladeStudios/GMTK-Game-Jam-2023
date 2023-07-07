@@ -37,7 +37,7 @@ func _physics_process(delta):
 	var next_path_position: Vector2 = navigation_agent.get_next_path_position()
 	var new_velocity: Vector2 = next_path_position - current_agent_position
 	new_velocity = new_velocity.normalized()
-	position += new_velocity*1
+	position += new_velocity*16
 
 #	pick_new_state()
 #	update_animation_parameters(new_velocity)
