@@ -6,18 +6,21 @@ var RightCorner = Vector2i(18, 6)
 var spawn_obj = preload("res://Placables/Minions/Melee_Minion.tscn")
 var X_COORD = 18
 var Y_COORD = 6
+var curr_x = 0
+var curr_y = 0
+var matrix
 
-func create_map(w, h):
+func create_map(h, w):
 	var map = []
 
-	for x in range(w):
-		var col = [0]
-		col.resize(h)
+	for x in range(h+1):
+		var col = []
+		col.resize(w+1)
 		map.append(col)
 
 	return map
 func _ready():
-	var map = create_map(X_COORD, Y_COORD)
+	matrix = create_map(Y_COORD, X_COORD)
 	
 func _process(delta):
 	erase_cell(2, LastSelectedTile)
@@ -31,7 +34,12 @@ func _process(delta):
 func _unhandled_input(event):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if event.pressed:
-			var obj = spawn_obj.instantiate()
-			obj.Initialize("Skeleton1")
-			obj.position = local_to_map(get_global_mouse_position())*16
-			add_child(obj)
+			var possible_position = local_to_map(get_global_mouse_position())
+			if possible_position.x > X_COORD or possible_position.y > Y_COORD or possible_position.x <=0 or possible_position.y <= 0:
+				pass
+			elif matrix[possible_position.y][possible_position.x] == null:
+				matrix[possible_position.y][possible_position.x] = 1
+				var obj = spawn_obj.instantiate()
+				obj.Initialize("Skeleton1")
+				obj.position = local_to_map(get_global_mouse_position())*16
+				add_child(obj)
