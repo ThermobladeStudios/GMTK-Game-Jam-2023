@@ -7,13 +7,13 @@ var File = FileAccess.get_file_as_string("res://Placables/Minions/Minions.json")
 var Json = JSON.parse_string(File)
 
 
-#@onready var animation_tree = $AnimationTree
-#@onready var state_machine = animation_tree.get("parameters/playback")
-#0 is idle 1 is walking 2 is attacking
+
 var new_velocity : Vector2
 @onready var currPos = self.position
 @export var movement_target: Node2D
 @export var navigation_agent: NavigationAgent2D
+
+var attacktype
 
 
 func _ready():
@@ -24,6 +24,7 @@ func _ready():
 
 func _process(delta):
 	$ProgressBar.value = HEALTH
+	
 
 func _physics_process(delta):
 	actor_setup()
@@ -32,7 +33,6 @@ func _physics_process(delta):
 	new_velocity = next_path_position - current_agent_position
 	new_velocity = new_velocity.normalized()
 	new_velocity = new_velocity.round()
-	print($Beam_Attack.attack)
 
 func movement(new_velocity):
 	if(new_velocity[1] == -1): 
@@ -58,30 +58,43 @@ func set_movement_target(target_point: Vector2):
 	
 
 func _on_movement_timeout():
+	print(deciding_attack())
 	if($Small_Attack.attack == [0,0,0,0]):
 		movement(new_velocity)
 	else:
 		for x in 4:
 			if($Small_Attack.attack[x] == 1):
 				if (x == 0):
-					print("enemy Up")
+					pass
+					#print("enemy Up")
 				elif(x == 1):
-					print("enemy Down")
+					pass
+					#print("enemy Down")
 				elif(x == 2):
-					print("enemy Left")
+					pass
+					#print("enemy Left")
 				elif(x == 3):
-					print("enemy Right")
+					pass
+					#print("enemy Right")
 
-func CalculateDamage(Attack):
-	return Damage * Json[Attack]["Multiplier"]
 
-#func update_animation_parameters(move_input : Vector2):	
-#	if(move_input != Vector2.ZERO):
-#		animation_tree.set("parameters/Walk/blend_position", move_input)
-#	elif(state == 2):
-#		velocity = Vector2.ZERO
-#func pick_new_state():
-#	if(state == 1):
-#		state_machine.travel("Walk")
-#	elif(state == 2):
-#		state_machine.travel("Attack")
+func deciding_attack():
+	var satk :float = $Small_Attack.get_weight()
+	var batk :float = $Beam_Attack.get_weight()
+	var tot_minions = get_tree().get_nodes_in_group("minions").size()
+
+
+	var sweight = (satk/tot_minions)*100
+	var bweight = (batk/tot_minions)*100
+	var attacktype = randi_range(1,100)
+	if(attacktype < sweight):
+		print(attacktype)
+		return ("small attack")
+
+	elif(attacktype > sweight):
+		return("beam attack")
+	
+	
+	
+
+

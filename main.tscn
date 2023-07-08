@@ -18,16 +18,16 @@ movement_target = NodePath("../Marker2D")
 position = Vector2(288, 48)
 
 [node name="Minion" parent="." instance=ExtResource("3_vgp0v")]
-position = Vector2(176, 48)
+position = Vector2(176, 80)
 
 [node name="Minion5" parent="." instance=ExtResource("3_vgp0v")]
-position = Vector2(208, 48)
+position = Vector2(176, 48)
 
 [node name="Minion6" parent="." instance=ExtResource("3_vgp0v")]
-position = Vector2(224, 48)
+position = Vector2(224, 80)
 
 [node name="Minion7" parent="." instance=ExtResource("3_vgp0v")]
-position = Vector2(240, 48)
+position = Vector2(240, 64)
 
 [node name="Minion2" parent="." instance=ExtResource("3_vgp0v")]
 position = Vector2(160, 64)
@@ -35,13 +35,13 @@ position = Vector2(160, 64)
 [node name="Minion3" parent="." instance=ExtResource("3_vgp0v")]
 position = Vector2(160, 32)
 
+[node name="Minion4" parent="." instance=ExtResource("3_vgp0v")]
+position = Vector2(192, 80)
+
 [node name="Interface" parent="." instance=ExtResource("4_bvfwu")]
 offset_top = 128.0
 offset_right = 200.0
 offset_bottom = 128.0
 
-[node name="Minion4" parent="." instance=ExtResource("3_vgp0v")]
-position = Vector2(192, 48)
-
 [node name="Node2D" parent="." instance=ExtResource("5_u7o2b")]
-position = Vector2(143, 64)
+position = Vector2(144, 64)

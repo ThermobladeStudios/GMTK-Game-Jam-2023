@@ -104,31 +104,50 @@ shape = SubResource("RectangleShape2D_j6jjw")
 script = ExtResource("2_ehfhu")
 
 [node name="Small_attack_Up" type="Area2D" parent="Small_Attack"]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Small_Attack/Small_attack_Up"]
 position = Vector2(8, -8)
 shape = SubResource("RectangleShape2D_uojpf")
 
 [node name="Small_attack_Down" type="Area2D" parent="Small_Attack"]
+visible = false
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Small_Attack/Small_attack_Down"]
 position = Vector2(8, 24)
 shape = SubResource("RectangleShape2D_uojpf")
 
 [node name="Small_attack_Left" type="Area2D" parent="Small_Attack"]
+visible = false
 
 [node name="CollisionShape2D1" type="CollisionShape2D" parent="Small_Attack/Small_attack_Left"]
 position = Vector2(-8, 8)
 shape = SubResource("RectangleShape2D_uojpf")
 
 [node name="Small_attack_Right" type="Area2D" parent="Small_Attack"]
+visible = false
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Small_Attack/Small_attack_Right"]
 position = Vector2(24, 8)
 shape = SubResource("RectangleShape2D_uojpf")
 
-[node name="Caution_" type="Sprite2D" parent="."]
+[node name="Node2D" type="Node2D" parent="Small_Attack"]
+visible = false
+
+[node name="Caution_" type="Sprite2D" parent="Small_Attack/Node2D"]
 position = Vector2(24, 8)
+texture = ExtResource("4_s2ldx")
+
+[node name="Caution_2" type="Sprite2D" parent="Small_Attack/Node2D"]
+position = Vector2(8, -8)
+texture = ExtResource("4_s2ldx")
+
+[node name="Caution_3" type="Sprite2D" parent="Small_Attack/Node2D"]
+position = Vector2(-8, 8)
+texture = ExtResource("4_s2ldx")
+
+[node name="Caution_4" type="Sprite2D" parent="Small_Attack/Node2D"]
+position = Vector2(8, 24)
 texture = ExtResource("4_s2ldx")
 
 [connection signal="timeout" from="movement" to="." method="_on_movement_timeout"]
