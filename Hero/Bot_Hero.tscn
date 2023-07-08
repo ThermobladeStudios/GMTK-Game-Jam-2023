@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://dw37rc236xqwp"]
+[gd_scene load_steps=15 format=3 uid="uid://dw37rc236xqwp"]
 
 [ext_resource type="Script" path="res://Hero/Bot_Hero.gd" id="1_oc3kn"]
+[ext_resource type="Script" path="res://Hero/Beam_Attack.gd" id="2_ckern"]
 [ext_resource type="Script" path="res://Hero/Small_Attack.gd" id="2_ehfhu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u7o58"]
@@ -15,6 +16,21 @@ bg_color = Color(0.921569, 0.223529, 0.231373, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7rwnq"]
 bg_color = Color(0, 1, 0.32549, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x21ue"]
+size = Vector2(14, 47)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nca8i"]
+size = Vector2(14, 254)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2opw7"]
+size = Vector2(14, 254)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tvgjk"]
+size = Vector2(254, 14)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j6jjw"]
+size = Vector2(254, 14)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uojpf"]
 size = Vector2(14, 14)
@@ -38,15 +54,50 @@ debug_enabled = true
 [node name="ProgressBar" type="ProgressBar" parent="."]
 material = SubResource("CanvasItemMaterial_kn8u4")
 offset_left = -3.0
-offset_top = 16.0
+offset_top = 17.0
 offset_right = 1.0
-offset_bottom = 35.0
+offset_bottom = 75.0
 scale = Vector2(5.69192, 0.0517439)
 theme_override_styles/background = SubResource("StyleBoxFlat_p1rro")
 theme_override_styles/fill = SubResource("StyleBoxFlat_7rwnq")
 show_percentage = false
 
 [node name="movement" type="Timer" parent="."]
+
+[node name="arrows" type="Node2D" parent="."]
+
+[node name="Area2D" type="Area2D" parent="arrows"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="arrows/Area2D"]
+position = Vector2(56, 8)
+shape = SubResource("RectangleShape2D_x21ue")
+
+[node name="Beam_Attack" type="Node2D" parent="."]
+script = ExtResource("2_ckern")
+
+[node name="Beam_attack_Up" type="Area2D" parent="Beam_Attack"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Beam_Attack/Beam_attack_Up"]
+position = Vector2(8, 144)
+shape = SubResource("RectangleShape2D_nca8i")
+
+[node name="Beam_attack_Down" type="Area2D" parent="Beam_Attack"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Beam_Attack/Beam_attack_Down"]
+position = Vector2(8, -128)
+shape = SubResource("RectangleShape2D_2opw7")
+
+[node name="Beam_attack_Left" type="Area2D" parent="Beam_Attack"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Beam_Attack/Beam_attack_Left"]
+position = Vector2(-128, 8)
+shape = SubResource("RectangleShape2D_tvgjk")
+
+[node name="Beam_attack_Right" type="Area2D" parent="Beam_Attack"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Beam_Attack/Beam_attack_Right"]
+position = Vector2(144, 8)
+shape = SubResource("RectangleShape2D_j6jjw")
 
 [node name="Small_Attack" type="Node2D" parent="."]
 script = ExtResource("2_ehfhu")
@@ -76,6 +127,14 @@ position = Vector2(24, 8)
 shape = SubResource("RectangleShape2D_uojpf")
 
 [connection signal="timeout" from="movement" to="." method="_on_movement_timeout"]
+[connection signal="area_entered" from="Beam_Attack/Beam_attack_Up" to="Beam_Attack" method="_on_beam_attack_up_area_entered"]
+[connection signal="area_exited" from="Beam_Attack/Beam_attack_Up" to="Beam_Attack" method="_on_beam_attack_up_area_exited"]
+[connection signal="area_entered" from="Beam_Attack/Beam_attack_Down" to="Beam_Attack" method="_on_beam_attack_down_area_entered"]
+[connection signal="area_exited" from="Beam_Attack/Beam_attack_Down" to="Beam_Attack" method="_on_beam_attack_down_area_exited"]
+[connection signal="area_entered" from="Beam_Attack/Beam_attack_Left" to="Beam_Attack" method="_on_beam_attack_left_area_entered"]
+[connection signal="area_exited" from="Beam_Attack/Beam_attack_Left" to="Beam_Attack" method="_on_beam_attack_left_area_exited"]
+[connection signal="area_entered" from="Beam_Attack/Beam_attack_Right" to="Beam_Attack" method="_on_beam_attack_right_area_entered"]
+[connection signal="area_exited" from="Beam_Attack/Beam_attack_Right" to="Beam_Attack" method="_on_beam_attack_right_area_exited"]
 [connection signal="area_entered" from="Small_Attack/Small_attack_Up" to="Small_Attack" method="_on_small_attack_up_area_entered"]
 [connection signal="area_exited" from="Small_Attack/Small_attack_Up" to="Small_Attack" method="_on_small_attack_up_area_exited"]
 [connection signal="area_entered" from="Small_Attack/Small_attack_Down" to="Small_Attack" method="_on_small_attack_down_area_entered"]

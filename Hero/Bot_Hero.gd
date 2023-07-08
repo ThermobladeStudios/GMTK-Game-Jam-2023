@@ -4,8 +4,8 @@ extends Area2D
 @export var SPEED = 120
 #@export var DMG = 20
 @export var HEALTH = 100
-#
-#
+
+
 #@onready var animation_tree = $AnimationTree
 #@onready var state_machine = animation_tree.get("parameters/playback")
 #0 is idle 1 is walking 2 is attacking
@@ -19,8 +19,10 @@ var new_velocity : Vector2
 func _ready():
 	navigation_agent.path_desired_distance = 10.0
 	navigation_agent.target_desired_distance = 50.0
-	
+		
 	$movement.start(0.5)
+	
+	
 	
 	$ProgressBar.max_value = HEALTH
 	
@@ -31,16 +33,16 @@ func _process(delta):
 
 func _physics_process(delta):
 	actor_setup()
-	
 	var current_agent_position: Vector2 = global_position
 	var next_path_position: Vector2 = navigation_agent.get_next_path_position()
 	new_velocity = next_path_position - current_agent_position
 	new_velocity = new_velocity.normalized()
 	new_velocity = new_velocity.round()
+	print($Beam_Attack.attack)
 
 
 
-	
+
 func movement(new_velocity):
 	if(new_velocity[1] == -1): 
 		#print("Up")
@@ -69,7 +71,21 @@ func set_movement_target(target_point: Vector2):
 
 
 func _on_movement_timeout():
-	movement(new_velocity)
+	if($Small_Attack.attack == [0,0,0,0]):
+		movement(new_velocity)
+	else:
+		for x in 4:
+			if($Small_Attack.attack[x] == 1):
+				if (x == 0):
+					print("enemy Up")
+				elif(x == 1):
+					print("enemy Down")
+				elif(x == 2):
+					print("enemy Left")
+				elif(x == 3):
+					print("enemy Right")
+					
+				
 
 
 #func update_animation_parameters(move_input : Vector2):	
@@ -82,10 +98,3 @@ func _on_movement_timeout():
 #		state_machine.travel("Walk")
 #	elif(state == 2):
 #		state_machine.travel("Attack")
-
-
-
-func _on_area_2d_area_entered(area):	
-	print(area)
-	if area.get_name() == "Minion":
-		print("ATTACK")
