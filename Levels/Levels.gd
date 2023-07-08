@@ -20,12 +20,12 @@ func _ready():
 	var map = create_map(X_COORD, Y_COORD)
 	
 func _process(delta):
-	erase_cell(1, LastSelectedTile)
+	erase_cell(2, LastSelectedTile)
 	
 	var SelectedTile = local_to_map(get_global_mouse_position())
 	print(SelectedTile - LeftCorner)
 	if SelectedTile - LeftCorner <= RightCorner:
-		set_cell(1, SelectedTile, 3, Vector2i(0, 0), 0)
+		set_cell(2, SelectedTile, 3, Vector2i(0, 0), 0)
 
 	LastSelectedTile = SelectedTile
 
