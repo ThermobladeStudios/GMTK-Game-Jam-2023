@@ -16,6 +16,7 @@ func create_map(w, h):
 		map.append(col)
 
 	return map
+
 func _ready():
 	var map = create_map(X_COORD, Y_COORD)
 	
