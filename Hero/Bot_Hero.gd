@@ -38,7 +38,6 @@ func _physics_process(delta):
 
 
 
-
 	
 func movement(new_velocity):
 	if(new_velocity[1] == -1): 

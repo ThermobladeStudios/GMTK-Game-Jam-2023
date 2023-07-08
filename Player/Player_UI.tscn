@@ -1,9 +1,47 @@
-[gd_scene format=3 uid="uid://dxhdlcuv0cfcl"]
+[gd_scene load_steps=3 format=3 uid="uid://dxhdlcuv0cfcl"]
+
+[ext_resource type="Texture2D" uid="uid://bditw1wv2k6nl" path="res://Player/ui_big_pieces.png" id="1_ygbek"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d6hi1"]
+bg_color = Color(0.145098, 0.0745098, 0.101961, 1)
 
 [node name="Interface" type="Control"]
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="UiBigPieces" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(36, 68)
+texture = ExtResource("1_ygbek")
+
+[node name="Panel" type="Panel" parent="."]
+z_index = -1
+layout_mode = 0
+offset_right = 320.0
+offset_bottom = 52.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_d6hi1")
+
+[node name="GridContainer" type="GridContainer" parent="Panel"]
+layout_mode = 2
+offset_left = 176.0
+offset_top = 3.0
+offset_right = 274.0
+offset_bottom = 43.0
+columns = 4
+
+[node name="Button" type="Button" parent="Panel/GridContainer"]
+custom_minimum_size = Vector2(30, 40)
+layout_mode = 2
+
+[node name="Button2" type="Button" parent="Panel/GridContainer"]
+custom_minimum_size = Vector2(30, 40)
+layout_mode = 2
+
+[node name="Button3" type="Button" parent="Panel/GridContainer"]
+custom_minimum_size = Vector2(30, 40)
+layout_mode = 2
