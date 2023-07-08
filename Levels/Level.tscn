@@ -1,7 +1,6 @@
-[gd_scene load_steps=37 format=3 uid="uid://0hwjm7ci2mai"]
+[gd_scene load_steps=36 format=3 uid="uid://0hwjm7ci2mai"]
 
 [ext_resource type="Texture2D" uid="uid://bephp22ves3qu" path="res://Levels/Dungeon_Tileset.png" id="1_tcis5"]
-[ext_resource type="PackedScene" uid="uid://dw37rc236xqwp" path="res://Hero/Bot_Hero.tscn" id="2_fr88q"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_anh2j"]
 vertices = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -314,10 +313,3 @@ layer_1/y_sort_enabled = false
 layer_1/y_sort_origin = 0
 layer_1/z_index = 0
 layer_1/tile_data = PackedInt32Array(262144, 524290, 5, 196627, 458754, 4, 262163, 458754, 5, 196608, 524290, 4)
-
-[node name="Area2D" parent="." node_paths=PackedStringArray("movement_target") instance=ExtResource("2_fr88q")]
-position = Vector2(24, 56)
-movement_target = NodePath("../Marker2D")
-
-[node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(305, 57)
