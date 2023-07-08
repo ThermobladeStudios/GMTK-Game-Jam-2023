@@ -19,6 +19,7 @@ func create_map(h, w):
 		map.append(col)
 
 	return map
+
 func _ready():
 	matrix = create_map(Y_COORD, X_COORD)
 	
