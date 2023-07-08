@@ -48,6 +48,6 @@ func _unhandled_input(event):
 				obj.position = local_to_map(get_global_mouse_position())*16
 				add_child(obj)
 			elif matrix[possible_position.y][possible_position.x] in Json:
-				for x in Json[matrix[possible_position.y][possible_position.x]]["AttackRange"]:
+				for x in Json[matrix[possible_position.y][possible_position.x]]["AttackArea"]:
 					set_cell(4, possible_position - Vector2i(x[0], x[1]), 4, Vector2i(0, 0), 0)
 			#elif matrix[possible_position.y][possible_position.x] == "Skeleton2"
