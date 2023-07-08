@@ -16,7 +16,8 @@ func Initialize(Name):
 	Health = Name["Health"]
 	Attack = Name["Attack"]
 	Defense = Name["Defense"]
+	$AnimatedSprite2D.animation = Name
 
 func _on_body_entered(body):
 	if body.get_name() == "Hero":
-		Health -= Hero.Damage
+		Health -= body.Health

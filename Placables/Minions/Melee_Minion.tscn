@@ -1,11 +1,153 @@
-[gd_scene load_steps=3 format=3 uid="uid://cjt4uxnous8l2"]
+[gd_scene load_steps=21 format=3 uid="uid://cjt4uxnous8l2"]
 
 [ext_resource type="Script" path="res://Placables/Minions/Minions.gd" id="1_xl2vd"]
+[ext_resource type="Texture2D" uid="uid://dn8k0vkvassao" path="res://Placables/Minions/minions.png" id="2_h714t"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aegne"]
+size = Vector2(16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qv7xx"]
+atlas = ExtResource("2_h714t")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a02et"]
+atlas = ExtResource("2_h714t")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5c43v"]
+atlas = ExtResource("2_h714t")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rfddv"]
+atlas = ExtResource("2_h714t")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nq53g"]
+atlas = ExtResource("2_h714t")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v7owx"]
+atlas = ExtResource("2_h714t")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mh0tf"]
+atlas = ExtResource("2_h714t")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8kihy"]
+atlas = ExtResource("2_h714t")
+region = Rect2(48, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_swvbu"]
+atlas = ExtResource("2_h714t")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sk75x"]
+atlas = ExtResource("2_h714t")
+region = Rect2(16, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ekf5"]
+atlas = ExtResource("2_h714t")
+region = Rect2(32, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0dcuy"]
+atlas = ExtResource("2_h714t")
+region = Rect2(48, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4i306"]
+atlas = ExtResource("2_h714t")
+region = Rect2(0, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4pw6v"]
+atlas = ExtResource("2_h714t")
+region = Rect2(16, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ywu2"]
+atlas = ExtResource("2_h714t")
+region = Rect2(32, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g1kfm"]
+atlas = ExtResource("2_h714t")
+region = Rect2(48, 48, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4mqkb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qv7xx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a02et")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5c43v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rfddv")
+}],
+"loop": true,
+"name": &"Skeleton1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nq53g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v7owx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mh0tf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8kihy")
+}],
+"loop": true,
+"name": &"Skeleton2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_swvbu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sk75x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ekf5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0dcuy")
+}],
+"loop": true,
+"name": &"Skull",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4i306")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4pw6v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ywu2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g1kfm")
+}],
+"loop": true,
+"name": &"Vampire",
+"speed": 5.0
+}]
 
 [node name="Player" type="Area2D"]
 script = ExtResource("1_xl2vd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_aegne")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_4mqkb")
+animation = &"Skeleton1"
+autoplay = "Skeleton1"

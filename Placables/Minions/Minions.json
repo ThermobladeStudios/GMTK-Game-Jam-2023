@@ -1,7 +1,22 @@
 {
-	"MeleeMinion": {
+	"Skeleton1": {
 		"Health": 100,
 		"Attack": 10,
 		"Defense": 3
-	}
+	},
+	"Skeleton2": {
+		"Health": 100,
+		"Attack": 10,
+		"Defense": 3
+	},
+	"Skull": {
+		"Health": 100,
+		"Attack": 10,
+		"Defense": 3
+	},
+	"Vampire": {
+		"Health": 100,
+		"Attack": 10,
+		"Defense": 3
+	},
 }
