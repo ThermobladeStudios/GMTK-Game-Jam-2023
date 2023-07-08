@@ -5,6 +5,8 @@ var Health
 var Attack
 var Defense
 var Position
+var Moved = false
+var Attacked = false
 var File = FileAccess.get_file_as_string("res://Placables/Minions/Minions.json")
 var Json = JSON.parse_string(File)
 
