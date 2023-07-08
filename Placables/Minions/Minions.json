@@ -2,21 +2,24 @@
 	"Skeleton1": {
 		"Health": 100,
 		"Attack": 10,
-		"Defense": 3
+		"Defense": 3,
+		"AttackRange": [[1, 0], [0, 1], [-1, 0], [0,-1]]
 	},
 	"Skeleton2": {
 		"Health": 100,
 		"Attack": 10,
-		"Defense": 3
+		"AttackRange": [[2, 1], [2, 0], [2, -1], [-1, 2], [0, 2], [1, 2], [-2, 1], [-2, 0], [-2, -1], [-1, -2], [0, -2], [1, -2]]
 	},
 	"Skull": {
 		"Health": 100,
 		"Attack": 10,
-		"Defense": 3
+		"Defense": 3,
+		"AttackRange": [[1, 0], [2, 0], [1, 1], [0, 1], [0, 2], [-1, 1], [-1, 0], [-2, 0], [-1, -1], [0, -1], [0, -2], [1, -1]]
 	},
 	"Vampire": {
 		"Health": 100,
 		"Attack": 10,
-		"Defense": 3
+		"Defense": 3,
+		"AttackRange": [[1, 0], [0, 1], [-1, 0], [0,-1]]
 	},
 }
