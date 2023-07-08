@@ -19,5 +19,5 @@ func Initialize(Name):
 	Defense = Name["Defense"]
 
 func _on_body_entered(body):
-	if body.get_name() == "Hero":
-		Health -= body.Health
+	if "Attack" in body.get_name():
+		Health -= body.get_parent().get_parent().CalculateDamage(body)
