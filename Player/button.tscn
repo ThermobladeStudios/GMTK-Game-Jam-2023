@@ -1,0 +1,26 @@
+[gd_scene load_steps=7 format=3 uid="uid://csjr38t0fvhja"]
+
+[ext_resource type="Texture2D" uid="uid://dq2sdkjpbexbk" path="res://Player/Minion_card.png" id="1_4tcdf"]
+[ext_resource type="Texture2D" uid="uid://ehppac168mpy" path="res://Player/Minion_card_selected.png" id="2_njxut"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_loxal"]
+texture = ExtResource("1_4tcdf")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_q77j2"]
+texture = ExtResource("2_njxut")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ytl08"]
+texture = ExtResource("2_njxut")
+modulate_color = Color(0.745098, 0.745098, 0.745098, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kurdn"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[node name="Button" type="Button"]
+custom_minimum_size = Vector2(35, 45)
+offset_right = 8.0
+offset_bottom = 8.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_loxal")
+theme_override_styles/hover = SubResource("StyleBoxTexture_q77j2")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_ytl08")
+theme_override_styles/focus = SubResource("StyleBoxFlat_kurdn")
