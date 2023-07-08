@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://bidbei3d5qk34"]
+
+[ext_resource type="Texture2D" uid="uid://cvu3el60peo1b" path="res://icon.svg" id="1_vtnl7"]
+
+[node name="placable_list" type="ItemList"]
+offset_left = -2.0
+offset_top = 32.0
+offset_right = 530.0
+offset_bottom = 184.0
+item_count = 2
+max_columns = 5
+item_0/text = "Minion"
+item_0/icon = ExtResource("1_vtnl7")
+item_1/text = "obstacle"
+item_1/icon = ExtResource("1_vtnl7")
