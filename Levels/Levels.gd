@@ -9,6 +9,8 @@ var Y_COORD = 6
 var curr_x = 0
 var curr_y = 0
 var matrix
+var File = FileAccess.get_file_as_string("res://Placables/Minions/Minions.json")
+var Json = JSON.parse_string(File)
 
 func create_map(h, w):
 	var map = []
@@ -35,19 +37,17 @@ func _process(delta):
 func _unhandled_input(event):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if event.pressed:
+			clear_layer(4)
 			var possible_position = local_to_map(get_global_mouse_position())
 			if possible_position.x > X_COORD or possible_position.y > Y_COORD or possible_position.x <=0 or possible_position.y <= 0:
 				pass
 			elif matrix[possible_position.y][possible_position.x] == null:
-				clear_layer(4)
 				var obj = spawn_obj.instantiate()
 				obj.Initialize("Skeleton1") 
 				matrix[possible_position.y][possible_position.x] = obj.Name
 				obj.position = local_to_map(get_global_mouse_position())*16
 				add_child(obj)
-			elif matrix[possible_position.y][possible_position.x] == "Skeleton1":
-				set_cell(4, possible_position - Vector2i(1, 0), 3, Vector2i(0, 0), 0)
-				set_cell(4, possible_position - Vector2i(0, 1), 3, Vector2i(0, 0), 0)
-				set_cell(4, possible_position + Vector2i(1, 0), 3, Vector2i(0, 0), 0)
-				set_cell(4, possible_position + Vector2i(0, 1), 3, Vector2i(0, 0), 0)
+			elif matrix[possible_position.y][possible_position.x] in Json:
+				for x in Json[matrix[possible_position.y][possible_position.x]]["AttackRange"]:
+					set_cell(4, possible_position - Vector2i(x[0], x[1]), 4, Vector2i(0, 0), 0)
 			#elif matrix[possible_position.y][possible_position.x] == "Skeleton2"

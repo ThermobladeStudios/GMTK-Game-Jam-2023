@@ -13,12 +13,13 @@ func _ready():
 	pass # Replace with function body.
 
 func Initialize(Name):
-	$AnimatedSprite2D.animation = Name
+	print(Name)
+	$AnimatedSprite2D.play(Name)
 	self.Name = Name
 	Name = Json[Name]
 	Health = Name["Health"]
 	Attack = Name["Attack"]
-	Defense = Name["Defense"]
+	#Defense = Name["Defense"]
 
 func do_damage(damage):
 	Health -= damage

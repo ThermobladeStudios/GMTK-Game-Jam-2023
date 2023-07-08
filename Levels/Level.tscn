@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://0hwjm7ci2mai"]
+[gd_scene load_steps=14 format=3 uid="uid://0hwjm7ci2mai"]
 
 [ext_resource type="Texture2D" uid="uid://bephp22ves3qu" path="res://Levels/Dungeon_Tileset.png" id="1_tcis5"]
 [ext_resource type="Texture2D" uid="uid://craqe8bp6ifux" path="res://Levels/transparent1.png" id="1_xe6e0"]
 [ext_resource type="Texture2D" uid="uid://c3m1gqx04qcgi" path="res://Player/square_up_down_4.png" id="2_o8a3u"]
 [ext_resource type="Texture2D" uid="uid://clxr4h7jln18b" path="res://Levels/Transparent2.png" id="2_vwwyh"]
 [ext_resource type="Script" path="res://Levels/Levels.gd" id="4_xpkxh"]
+[ext_resource type="Texture2D" uid="uid://c38c48xlg17v7" path="res://Player/ValidMove.png" id="5_xk8gh"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_xj2j1"]
 vertices = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -127,12 +128,17 @@ texture = ExtResource("1_tcis5")
 texture = ExtResource("2_o8a3u")
 0:0/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y13sx"]
+texture = ExtResource("5_xk8gh")
+0:0/0 = 0
+
 [sub_resource type="TileSet" id="TileSet_uhwdr"]
 navigation_layer_0/layers = 1
 sources/0 = SubResource("TileSetAtlasSource_le23r")
 sources/1 = SubResource("TileSetAtlasSource_kaoqu")
 sources/2 = SubResource("TileSetAtlasSource_m1y5s")
 sources/3 = SubResource("TileSetAtlasSource_wbje1")
+sources/4 = SubResource("TileSetAtlasSource_y13sx")
 
 [node name="TileMap" type="TileMap"]
 tile_set = SubResource("TileSet_uhwdr")
