@@ -1,0 +1,8 @@
+{
+	"BasicAttack": {
+		"Multiplier": 1
+	},
+	"BeamAttack": {
+		"Multiplier": 1.5
+	}
+}

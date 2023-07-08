@@ -1,9 +1,10 @@
 extends Area2D
 
 
-@export var SPEED = 120
-#@export var DMG = 20
 @export var HEALTH = 100
+var Damage = 10
+var File = FileAccess.get_file_as_string("res://Placables/Minions/Minions.json")
+var Json = JSON.parse_string(File)
 
 
 #@onready var animation_tree = $AnimationTree
@@ -15,18 +16,11 @@ var new_velocity : Vector2
 @export var navigation_agent: NavigationAgent2D
 
 
-
 func _ready():
 	navigation_agent.path_desired_distance = 10.0
 	navigation_agent.target_desired_distance = 50.0
-		
 	$movement.start(0.5)
-	
-	
-	
 	$ProgressBar.max_value = HEALTH
-	
-
 
 func _process(delta):
 	$ProgressBar.value = HEALTH
@@ -39,9 +33,6 @@ func _physics_process(delta):
 	new_velocity = new_velocity.normalized()
 	new_velocity = new_velocity.round()
 	print($Beam_Attack.attack)
-
-
-
 
 func movement(new_velocity):
 	if(new_velocity[1] == -1): 
@@ -66,10 +57,6 @@ func set_movement_target(target_point: Vector2):
 	navigation_agent.target_position = target_point
 	
 
-
-
-
-
 func _on_movement_timeout():
 	if($Small_Attack.attack == [0,0,0,0]):
 		movement(new_velocity)
@@ -84,9 +71,9 @@ func _on_movement_timeout():
 					print("enemy Left")
 				elif(x == 3):
 					print("enemy Right")
-					
-				
 
+func CalculateDamage(Attack):
+	return Damage * Json[Attack]["Multiplier"]
 
 #func update_animation_parameters(move_input : Vector2):	
 #	if(move_input != Vector2.ZERO):
