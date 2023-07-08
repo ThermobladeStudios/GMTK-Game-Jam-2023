@@ -2,7 +2,7 @@ extends TileMap
 
 var LastSelectedTile = Vector2(0, 0)
 var LeftCorner = Vector2i(1, 1)
-var RightCorner = Vector2i(17, 5)
+var RightCorner = Vector2i(18, 6)
 var spawn_obj = preload("res://Placables/Minions/Melee_Minion.tscn")
 var X_COORD = 18
 var Y_COORD = 6
@@ -23,8 +23,7 @@ func _process(delta):
 	erase_cell(2, LastSelectedTile)
 	
 	var SelectedTile = local_to_map(get_global_mouse_position())
-	#print(SelectedTile - LeftCorner)
-	if SelectedTile - LeftCorner <= RightCorner:
+	if SelectedTile.x >= LeftCorner.x and SelectedTile.x <= RightCorner.x and SelectedTile.y >= LeftCorner.y and SelectedTile.y <= RightCorner.y:
 		set_cell(2, SelectedTile, 3, Vector2i(0, 0), 0)
 
 	LastSelectedTile = SelectedTile
