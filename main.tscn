@@ -16,7 +16,7 @@ movement_target = NodePath("../Marker2D")
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(288, 48)
 
-[node name="Player" parent="." instance=ExtResource("3_vgp0v")]
+[node name="Minion" parent="." instance=ExtResource("3_vgp0v")]
 position = Vector2(160, 48)
 
 [node name="Interface" parent="." instance=ExtResource("4_bvfwu")]

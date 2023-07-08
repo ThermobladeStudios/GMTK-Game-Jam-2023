@@ -14,6 +14,8 @@ var new_velocity : Vector2
 @export var movement_target: Node2D
 @export var navigation_agent: NavigationAgent2D
 
+
+
 func _ready():
 	navigation_agent.path_desired_distance = 10.0
 	navigation_agent.target_desired_distance = 50.0
@@ -83,7 +85,7 @@ func _on_movement_timeout():
 
 
 
-func _on_area_2d_area_entered(area):
+func _on_area_2d_area_entered(area):	
 	print(area)
 	if area.get_name() == "Minion":
 		print("ATTACK")

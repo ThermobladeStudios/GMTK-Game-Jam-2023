@@ -23,7 +23,7 @@ func _process(delta):
 	erase_cell(2, LastSelectedTile)
 	
 	var SelectedTile = local_to_map(get_global_mouse_position())
-	print(SelectedTile - LeftCorner)
+	#print(SelectedTile - LeftCorner)
 	if SelectedTile - LeftCorner <= RightCorner:
 		set_cell(2, SelectedTile, 3, Vector2i(0, 0), 0)
 

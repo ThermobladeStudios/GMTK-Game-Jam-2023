@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://dw37rc236xqwp"]
+[gd_scene load_steps=9 format=3 uid="uid://dw37rc236xqwp"]
 
 [ext_resource type="Script" path="res://Hero/Bot_Hero.gd" id="1_oc3kn"]
+[ext_resource type="Script" path="res://Hero/Small_Attack.gd" id="2_ehfhu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u7o58"]
 size = Vector2(8, 8)
@@ -14,6 +15,9 @@ bg_color = Color(0.921569, 0.223529, 0.231373, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7rwnq"]
 bg_color = Color(0, 1, 0.32549, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uojpf"]
+size = Vector2(14, 14)
 
 [node name="Hero" type="Area2D" node_paths=PackedStringArray("navigation_agent")]
 script = ExtResource("1_oc3kn")
@@ -44,4 +48,39 @@ show_percentage = false
 
 [node name="movement" type="Timer" parent="."]
 
+[node name="Small_Attack" type="Node2D" parent="."]
+script = ExtResource("2_ehfhu")
+
+[node name="Small_attack_Up" type="Area2D" parent="Small_Attack"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Small_Attack/Small_attack_Up"]
+position = Vector2(8, -8)
+shape = SubResource("RectangleShape2D_uojpf")
+
+[node name="Small_attack_Down" type="Area2D" parent="Small_Attack"]
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Small_Attack/Small_attack_Down"]
+position = Vector2(8, 24)
+shape = SubResource("RectangleShape2D_uojpf")
+
+[node name="Small_attack_Left" type="Area2D" parent="Small_Attack"]
+
+[node name="CollisionShape2D1" type="CollisionShape2D" parent="Small_Attack/Small_attack_Left"]
+position = Vector2(-8, 8)
+shape = SubResource("RectangleShape2D_uojpf")
+
+[node name="Small_attack_Right" type="Area2D" parent="Small_Attack"]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Small_Attack/Small_attack_Right"]
+position = Vector2(24, 8)
+shape = SubResource("RectangleShape2D_uojpf")
+
 [connection signal="timeout" from="movement" to="." method="_on_movement_timeout"]
+[connection signal="area_entered" from="Small_Attack/Small_attack_Up" to="Small_Attack" method="_on_small_attack_up_area_entered"]
+[connection signal="area_exited" from="Small_Attack/Small_attack_Up" to="Small_Attack" method="_on_small_attack_up_area_exited"]
+[connection signal="area_entered" from="Small_Attack/Small_attack_Down" to="Small_Attack" method="_on_small_attack_down_area_entered"]
+[connection signal="area_exited" from="Small_Attack/Small_attack_Down" to="Small_Attack" method="_on_small_attack_down_area_exited"]
+[connection signal="area_entered" from="Small_Attack/Small_attack_Left" to="Small_Attack" method="_on_small_attack_left_area_entered"]
+[connection signal="area_exited" from="Small_Attack/Small_attack_Left" to="Small_Attack" method="_on_small_attack_left_area_exited"]
+[connection signal="area_entered" from="Small_Attack/Small_attack_Right" to="Small_Attack" method="_on_small_attack_right_area_entered"]
+[connection signal="area_exited" from="Small_Attack/Small_attack_Right" to="Small_Attack" method="_on_small_attack_right_area_exited"]
