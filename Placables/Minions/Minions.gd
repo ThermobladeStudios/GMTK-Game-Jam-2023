@@ -1,5 +1,6 @@
 extends Area2D
 
+var Name
 var Health
 var Attack
 var Defense
@@ -13,6 +14,7 @@ func _ready():
 
 func Initialize(Name):
 	$AnimatedSprite2D.animation = Name
+	self.Name = Name
 	Name = Json[Name]
 	Health = Name["Health"]
 	Attack = Name["Attack"]
