@@ -12,11 +12,11 @@ func _ready():
 	pass # Replace with function body.
 
 func Initialize(Name):
+	$AnimatedSprite2D.animation = Name
 	Name = Json[Name]
 	Health = Name["Health"]
 	Attack = Name["Attack"]
 	Defense = Name["Defense"]
-	$AnimatedSprite2D.animation = Name
 
 func _on_body_entered(body):
 	if body.get_name() == "Hero":
