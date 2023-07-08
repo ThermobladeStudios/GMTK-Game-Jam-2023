@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Hero/Bot_Hero.gd" id="1_oc3kn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u7o58"]
-size = Vector2(8, 8)
+size = Vector2(16, 16)
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_ounl3"]
 
@@ -15,14 +15,16 @@ bg_color = Color(0.921569, 0.223529, 0.231373, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7rwnq"]
 bg_color = Color(0, 1, 0.32549, 1)
 
-[node name="Hero" type="Area2D" node_paths=PackedStringArray("navigation_agent")]
+[node name="Area2D" type="Area2D" node_paths=PackedStringArray("navigation_agent")]
 script = ExtResource("1_oc3kn")
 navigation_agent = NodePath("NavigationAgent2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(8, 8)
 shape = SubResource("RectangleShape2D_u7o58")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(8, 8)
 scale = Vector2(16, 16)
 texture = SubResource("PlaceholderTexture2D_ounl3")
 
@@ -31,10 +33,10 @@ debug_enabled = true
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
 material = SubResource("CanvasItemMaterial_kn8u4")
-offset_left = -11.0
-offset_top = 8.0
-offset_right = -7.0
-offset_bottom = 27.0
+offset_left = -3.0
+offset_top = 16.0
+offset_right = 1.0
+offset_bottom = 35.0
 scale = Vector2(5.69192, 0.0517439)
 theme_override_styles/background = SubResource("StyleBoxFlat_p1rro")
 theme_override_styles/fill = SubResource("StyleBoxFlat_7rwnq")

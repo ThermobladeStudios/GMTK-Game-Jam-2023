@@ -29,8 +29,6 @@ func _process(delta):
 
 func _physics_process(delta):
 	actor_setup()
-	if navigation_agent.is_navigation_finished():
-		return
 	
 	var current_agent_position: Vector2 = global_position
 	var next_path_position: Vector2 = navigation_agent.get_next_path_position()
