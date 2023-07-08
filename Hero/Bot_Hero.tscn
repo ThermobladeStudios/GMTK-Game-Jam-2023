@@ -1,8 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://dw37rc236xqwp"]
+[gd_scene load_steps=16 format=3 uid="uid://dw37rc236xqwp"]
 
 [ext_resource type="Script" path="res://Hero/Bot_Hero.gd" id="1_oc3kn"]
 [ext_resource type="Script" path="res://Hero/Beam_Attack.gd" id="2_ckern"]
 [ext_resource type="Script" path="res://Hero/Small_Attack.gd" id="2_ehfhu"]
+[ext_resource type="Texture2D" uid="uid://cu6f44p6kr0hm" path="res://Placables/Obastacles/Caution..png" id="4_s2ldx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u7o58"]
 size = Vector2(8, 8)
@@ -125,6 +126,10 @@ shape = SubResource("RectangleShape2D_uojpf")
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Small_Attack/Small_attack_Right"]
 position = Vector2(24, 8)
 shape = SubResource("RectangleShape2D_uojpf")
+
+[node name="Caution_" type="Sprite2D" parent="."]
+position = Vector2(24, 8)
+texture = ExtResource("4_s2ldx")
 
 [connection signal="timeout" from="movement" to="." method="_on_movement_timeout"]
 [connection signal="area_entered" from="Beam_Attack/Beam_attack_Up" to="Beam_Attack" method="_on_beam_attack_up_area_entered"]
