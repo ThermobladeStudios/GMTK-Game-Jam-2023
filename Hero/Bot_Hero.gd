@@ -41,16 +41,16 @@ func _physics_process(delta):
 	
 func movement(new_velocity):
 	if(new_velocity[1] == -1): 
-		print("Up")
+		#print("Up")
 		currPos[1] -=16
 	elif(new_velocity[1] == 1):
-		print("Down")
+		#print("Down")
 		currPos[1] +=16
 	elif(new_velocity[0] == -1):
-		print("Left")
+		#print("Left")
 		currPos[0] -=16
 	elif(new_velocity[0] == 1):
-		print("right")
+		#print("right")
 		currPos[0] +=16
 	self.position = Vector2(currPos[0], currPos[1])
 func actor_setup():
@@ -80,3 +80,10 @@ func _on_movement_timeout():
 #		state_machine.travel("Walk")
 #	elif(state == 2):
 #		state_machine.travel("Attack")
+
+
+
+func _on_area_2d_area_entered(area):
+	print(area)
+	if area.get_name() == "Minion":
+		print("ATTACK")
