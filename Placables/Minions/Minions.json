@@ -1,0 +1,7 @@
+{
+	"MeleeMinion": {
+		"Health": 100,
+		"Attack": 10,
+		"Defense": 3
+	}
+}

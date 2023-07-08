@@ -1,3 +1,11 @@
-[gd_scene format=3 uid="uid://cjt4uxnous8l2"]
+[gd_scene load_steps=3 format=3 uid="uid://cjt4uxnous8l2"]
 
-[node name="Node2D" type="Node2D"]
+[ext_resource type="Script" path="res://Placables/Minions/Minions.gd" id="1_xl2vd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aegne"]
+
+[node name="Player" type="Area2D"]
+script = ExtResource("1_xl2vd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_aegne")
