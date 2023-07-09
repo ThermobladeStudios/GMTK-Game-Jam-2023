@@ -40,10 +40,10 @@ func _unhandled_input(event):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if event.pressed:
 			var possible_position = local_to_map(get_global_mouse_position())
-			var Tile = Map[possible_position.y][possible_position.x]
 			if possible_position.x > RightCorner.x or possible_position.y > RightCorner.y or possible_position.x <= 1 or possible_position.y <= 1:
 				pass
 			elif !obs_check:
+				var Tile = Map[possible_position.y][possible_position.x]
 				if Tile and Tile.Name in Json:
 					if Tile.Moved == false:
 						SelectedMinion = Tile
