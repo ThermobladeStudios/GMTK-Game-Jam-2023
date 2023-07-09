@@ -35,6 +35,10 @@ func _physics_process(delta):
 	new_velocity = new_velocity.round()
 
 func movement(new_velocity):
+	$Small_Attack/Node2D/Up.visible = false
+	$Small_Attack/Node2D/Down.visible = false
+	$Small_Attack/Node2D/Left.visible = false
+	$Small_Attack/Node2D/Right.visible = false
 	if(new_velocity[1] == -1): 
 		#print("Up")
 		currPos[1] -=16
