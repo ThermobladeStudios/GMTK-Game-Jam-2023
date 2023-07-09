@@ -1,6 +1,6 @@
 extends Control
 
-
+var hturns = 0
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	$HeroBar/FullHealth.visible = false
@@ -12,9 +12,17 @@ func _process(delta):
 		$HeroBar/FullHealth.visible = true
 
 func _on_next_turn_pressed():
-	var hero_turn = get_tree().get_root().get_child(1).get_node("Hero")
-	hero_turn.nextTurn()
+	hturns = 0
+	$Timer.start(0.5)
+
 	for x in get_tree().get_nodes_in_group("Minions"):
-		print(x)
 		x.Moved = false
 		x.Attacked = false
+
+
+func _on_timer_timeout():
+	var hero_turn = get_tree().get_root().get_child(1).get_node("Hero")
+	hero_turn.nextTurn()
+	hturns += 1
+	if(hturns == 3):
+		$Timer.stop()

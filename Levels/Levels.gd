@@ -86,5 +86,4 @@ func _unhandled_input(event):
 					obj.position = local_to_map(get_global_mouse_position()) * 16
 					add_child(obj)
 					set_cell(0, possible_position, 1, Vector2i(0, 0), 0)
-					print(get_cell_source_id(0, possible_position))	
 					Map[possible_position.y][possible_position.x] = obj

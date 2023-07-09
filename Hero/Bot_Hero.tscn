@@ -177,7 +177,6 @@ autoplay = "default"
 frame_progress = 0.428155
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-debug_enabled = true
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
 material = SubResource("CanvasItemMaterial_kn8u4")
