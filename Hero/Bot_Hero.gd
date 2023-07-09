@@ -4,7 +4,6 @@ var Damage = 10
 var File = FileAccess.get_file_as_string("res://Placables/Minions/Minions.json")
 var Json = JSON.parse_string(File)
 
-var Health = Global.Health
 var Name = "Hero"
 
 var new_velocity : Vector2
@@ -15,14 +14,11 @@ var new_velocity : Vector2
 var attacktype
 
 var beam_cd = 5
-
+var dir
 
 func _ready():
 	navigation_agent.path_desired_distance = 10.0
 	navigation_agent.target_desired_distance = 50.0
-	$ProgressBar.max_value = Global.Health
-func _process(delta):
-	$ProgressBar.value = Global.Health
 	
 
 func _physics_process(delta):
@@ -72,7 +68,7 @@ func nextTurn():
 		
 	else:
 		if(deciding_attack() == 1 && beam_cd == 0):
-			var dir = $Beam_Attack.attack.find($Beam_Attack.attack.max())
+			dir = $Beam_Attack.attack.find($Beam_Attack.attack.max())
 			if(dir == 0):
 				$Small_Attack/Node2D/Up.visible = true
 				for x in $Beam_Attack.inarea[dir]:
@@ -136,7 +132,10 @@ func deciding_attack():
 
 
 func _on_animated_sprite_2d_2_animation_looped():
-	var dir = $Beam_Attack.attack.find($Beam_Attack.attack.max())
+	play_anim()
+	
+	
+func play_anim():
 	if(dir == 0):
 
 		if($AnimatedSprite2D2.global_position.y > 32):
