@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://dxhdlcuv0cfcl"]
+[gd_scene load_steps=25 format=3 uid="uid://dxhdlcuv0cfcl"]
 
 [ext_resource type="Script" path="res://Player/interface.gd" id="1_3yqbv"]
 [ext_resource type="Texture2D" uid="uid://b2bj6nwj7qtwv" path="res://Player/coin_gold.png" id="2_7lm6j"]
@@ -7,6 +7,7 @@
 [ext_resource type="FontFile" uid="uid://bdrnqn667xjif" path="res://Player/EightBitDragon.ttf" id="4_b657h"]
 [ext_resource type="Texture2D" uid="uid://i1hm8tpckt21" path="res://Player/HeroBarPortrait.png" id="6_xugri"]
 [ext_resource type="Texture2D" uid="uid://cawyjhwg76s2x" path="res://Player/Bar.png" id="7_rv6pt"]
+[ext_resource type="Texture2D" uid="uid://c82adfxbwepvp" path="res://Player/FullHealth.png" id="8_gkqq2"]
 [ext_resource type="Texture2D" uid="uid://b2scx6o8tmwra" path="res://Player/Health.png" id="8_sig73"]
 [ext_resource type="Texture2D" uid="uid://cwjic5y8anx34" path="res://Player/mode.png" id="9_eynti"]
 [ext_resource type="Texture2D" uid="uid://bla0ppycvmdoc" path="res://Player/Inventory Bar.png" id="10_hguc1"]
@@ -147,9 +148,29 @@ offset_left = 32.0
 offset_top = 2.0
 offset_right = 299.0
 offset_bottom = 22.0
+value = 100.0
 fill_mode = 1
 texture_under = ExtResource("7_rv6pt")
 texture_progress = ExtResource("8_sig73")
+texture_progress_offset = Vector2(-1, 3)
+
+[node name="FullHealth" type="TextureRect" parent="HeroBar"]
+layout_mode = 0
+offset_left = 15.7143
+offset_top = 5.71428
+offset_right = 55.7143
+offset_bottom = 45.7143
+texture = ExtResource("8_gkqq2")
+stretch_mode = 2
+
+[node name="EmptyHealth" type="TextureRect" parent="HeroBar"]
+layout_mode = 0
+offset_left = 284.286
+offset_top = 5.71429
+offset_right = 324.286
+offset_bottom = 45.7143
+texture = ExtResource("8_gkqq2")
+stretch_mode = 2
 
 [node name="InventoryBar" type="TextureRect" parent="."]
 layout_mode = 0
