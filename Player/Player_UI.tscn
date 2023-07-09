@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://dxhdlcuv0cfcl"]
+[gd_scene load_steps=28 format=3 uid="uid://dxhdlcuv0cfcl"]
 
 [ext_resource type="Script" path="res://Player/interface.gd" id="1_3yqbv"]
 [ext_resource type="Texture2D" uid="uid://b2bj6nwj7qtwv" path="res://Player/coin_gold.png" id="2_7lm6j"]
@@ -11,8 +11,11 @@
 [ext_resource type="Texture2D" uid="uid://b2scx6o8tmwra" path="res://Player/Health.png" id="8_sig73"]
 [ext_resource type="Texture2D" uid="uid://cwjic5y8anx34" path="res://Player/mode.png" id="9_eynti"]
 [ext_resource type="Texture2D" uid="uid://bla0ppycvmdoc" path="res://Player/Inventory Bar.png" id="10_hguc1"]
-[ext_resource type="Texture2D" uid="uid://bxnu4wpxanj0w" path="res://Player/SkeletonIcon.png" id="10_uf8c7"]
 [ext_resource type="Texture2D" uid="uid://dyggcre5xgesu" path="res://Player/ObstacleIcon.png" id="11_07xh0"]
+[ext_resource type="Texture2D" uid="uid://bxnu4wpxanj0w" path="res://Player/Skeleton1Icon.png" id="11_hubpl"]
+[ext_resource type="Texture2D" uid="uid://daabjenrrk564" path="res://Player/Skeleton2Icon.png" id="12_wd5gj"]
+[ext_resource type="Texture2D" uid="uid://bhhf035kqxubq" path="res://Player/SkullIcon.png" id="13_kv4n0"]
+[ext_resource type="Texture2D" uid="uid://dxsth84cddpeu" path="res://Player/VampireIcon.png" id="14_ift6e"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_caxc7"]
 font = ExtResource("4_b657h")
@@ -181,6 +184,42 @@ offset_bottom = 186.0
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("10_hguc1")
 
+[node name="Skeleton1" type="TextureButton" parent="InventoryBar"]
+layout_mode = 0
+offset_left = 23.0
+offset_top = 9.0
+offset_right = 39.0
+offset_bottom = 25.0
+scale = Vector2(1.5, 1.5)
+texture_normal = ExtResource("11_hubpl")
+
+[node name="Skeleton2" type="TextureButton" parent="InventoryBar"]
+layout_mode = 0
+offset_left = 67.0
+offset_top = 9.0
+offset_right = 83.0
+offset_bottom = 25.0
+scale = Vector2(1.5, 1.5)
+texture_normal = ExtResource("12_wd5gj")
+
+[node name="Skull" type="TextureButton" parent="InventoryBar"]
+layout_mode = 0
+offset_left = 110.0
+offset_top = 9.0
+offset_right = 126.0
+offset_bottom = 25.0
+scale = Vector2(1.5, 1.5)
+texture_normal = ExtResource("13_kv4n0")
+
+[node name="Vampire" type="TextureButton" parent="InventoryBar"]
+layout_mode = 0
+offset_left = 154.0
+offset_top = 9.0
+offset_right = 170.0
+offset_bottom = 25.0
+scale = Vector2(1.5, 1.5)
+texture_normal = ExtResource("14_ift6e")
+
 [node name="Mode" type="TextureRect" parent="."]
 layout_mode = 0
 offset_left = 150.0
@@ -209,7 +248,7 @@ offset_top = 9.0
 offset_right = 100.0
 offset_bottom = 49.0
 scale = Vector2(0.7, 0.7)
-texture = ExtResource("10_uf8c7")
+texture = ExtResource("11_hubpl")
 
 [node name="Obstacle" type="TextureRect" parent="Mode"]
 visible = false
