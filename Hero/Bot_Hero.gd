@@ -21,9 +21,7 @@ var beam_cd = 5
 func _ready():
 	navigation_agent.path_desired_distance = 10.0
 	navigation_agent.target_desired_distance = 50.0
-	$movement.start(1)
 	$ProgressBar.max_value = HEALTH
-
 func _process(delta):
 	$ProgressBar.value = HEALTH
 	
@@ -59,7 +57,7 @@ func set_movement_target(target_point: Vector2):
 	navigation_agent.target_position = target_point
 	
 
-func _on_movement_timeout():
+func nextTurn():
 	if(beam_cd > 0):
 		beam_cd -=1
 	if($Small_Attack.attack == [0,0,0,0]):
@@ -114,7 +112,6 @@ func deciding_attack():
 	var satk :float = $Small_Attack.get_weight()
 	var batk :float = $Beam_Attack.get_weight()
 	var tot_minions = get_tree().get_nodes_in_group("minions").size()
-
 
 	var sweight = ((satk/tot_minions)*100) + 20
 	var bweight = (batk/tot_minions)*100
