@@ -11,6 +11,7 @@ func _physics_process(delta):
 
 
 func _on_beam_attack_up_area_entered(area):
+	print(area)
 	if("Minion" in area.get_name()):
 		attack[0] += 1
 		inarea[0].append(area)
@@ -29,7 +30,7 @@ func _on_beam_attack_down_area_exited(area):
 func _on_beam_attack_left_area_entered(area):
 	if("Minion" in area.get_name()):
 		attack[2] += 1
-		inarea[2].remove(area)
+		inarea[2].erase(area)
 func _on_beam_attack_left_area_exited(area):
 	if("Minion" in area.get_name()):
 		attack[2] -= 1

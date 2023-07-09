@@ -72,6 +72,10 @@ size = Vector2(254, 14)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uojpf"]
 size = Vector2(14, 14)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_n11ut"]
+atlas = ExtResource("6_ufdlj")
+region = Rect2(0, 48, 16, 16)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_allei"]
 atlas = ExtResource("6_ufdlj")
 region = Rect2(32, 0, 16, 16)
@@ -92,13 +96,12 @@ region = Rect2(16, 16, 16, 16)
 atlas = ExtResource("6_ufdlj")
 region = Rect2(48, 16, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_n11ut"]
-atlas = ExtResource("6_ufdlj")
-region = Rect2(0, 48, 16, 16)
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_o7bx2"]
 animations = [{
 "frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n11ut")
+}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_allei")
 }, {
@@ -113,9 +116,6 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_2xmi0")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_n11ut")
 }],
 "loop": true,
 "name": &"default",
@@ -134,7 +134,7 @@ shape = SubResource("RectangleShape2D_u7o58")
 position = Vector2(8, 8)
 sprite_frames = SubResource("SpriteFrames_dpx3j")
 autoplay = "default"
-frame_progress = 0.819601
+frame_progress = 0.428155
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 debug_enabled = true
@@ -237,10 +237,7 @@ position = Vector2(8, 24)
 texture = ExtResource("4_s2ldx")
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
-position = Vector2(16, 0)
 sprite_frames = SubResource("SpriteFrames_o7bx2")
-frame = 5
-frame_progress = 1.0
 centered = false
 
 [connection signal="timeout" from="movement" to="." method="_on_movement_timeout"]
