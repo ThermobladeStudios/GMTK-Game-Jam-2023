@@ -24,7 +24,8 @@ func create_map(h, w):
 	return map
 
 func _ready():
-	Map = create_map(RightCorner.y, RightCorner.x)
+	Global.Map = create_map(RightCorner.y, RightCorner.x)
+	Map = Global.Map
 	
 func _process(delta):
 	erase_cell(3, LastSelectedTile)
