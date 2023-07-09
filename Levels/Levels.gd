@@ -11,7 +11,7 @@ var curr_y = 0
 var matrix
 var File = FileAccess.get_file_as_string("res://Placables/Minions/Minions.json")
 var Json = JSON.parse_string(File)
-var MinionSelected= false
+var SelectedMinion
 
 func create_map(h, w):
 	var map = []
@@ -41,6 +41,8 @@ func _unhandled_input(event):
 			clear_layer(4)
 			var possible_position = local_to_map(get_global_mouse_position())
 			var Tile = matrix[possible_position.y][possible_position.x]
+			print(get_cell_source_id(4, possible_position))
+			print(possible_position)
 			if possible_position.x > X_COORD or possible_position.y > Y_COORD or possible_position.x <= 1 or possible_position.y <= 1:
 				pass
 			elif Tile == null:
@@ -49,17 +51,23 @@ func _unhandled_input(event):
 				matrix[possible_position.y][possible_position.x] = obj
 				obj.position = local_to_map(get_global_mouse_position()) * 16
 				add_child(obj)
+				SelectedMinion = null
 			elif Tile.Name in Json:
 				if Tile.Moved == false:
+					SelectedMinion = Tile
 					for x in Json[Tile.Name]["AttackArea"]:
 						if possible_position.x - x[0] >= LeftCorner.x and possible_position.x - x[0] <= RightCorner.x and possible_position.y - x[1] >= LeftCorner.y and possible_position.y - x[1] <= RightCorner.y and matrix[possible_position.y - x[1]][possible_position.x - x[0]] == null:
 							set_cell(4, possible_position - Vector2i(x[0], x[1]), 5, Vector2i(0, 0), 0)
-						Tile.Moved = true
 				elif Tile.Attacked == false:
+					SelectedMinion = Tile
 					for x in Json[Tile.Name ]["AttackArea"]:
 						if possible_position.x - x[0] >= LeftCorner.x and possible_position.x - x[0] <= RightCorner.x and possible_position.y - x[1] >= LeftCorner.y and possible_position.y - x[1] <= RightCorner.y and matrix[possible_position.y - x[1]][possible_position.x - x[0]] == null:
-							set_cell(4, possible_position - Vector2i(x[0], x[1]), 5, Vector2i(0, 0), 0)
-						Tile.Attacked = true
-				elif MinionSelected and get_cell_source_id(4, possible_position) == 5:
+							set_cell(4, possible_position - Vector2i(x[0], x[1]), 6, Vector2i(0, 0), 0)
+				elif SelectedMinion != null and get_cell_source_id(4, possible_position) == 5:
+					print(SelectedMinion)
+					SelectedMinion.position = possible_position * 16
+					SelectedMinion = null
 					Tile.Moved = true
-					
+				elif SelectedMinion != null and get_cell_source_id(5, possible_position) == 6:
+					SelectedMinion = null
+					Tile.Attacked = true
