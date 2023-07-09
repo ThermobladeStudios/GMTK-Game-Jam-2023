@@ -21,7 +21,7 @@ var beam_cd = 5
 func _ready():
 	navigation_agent.path_desired_distance = 10.0
 	navigation_agent.target_desired_distance = 50.0
-	$movement.start(0.5)
+	$movement.start(1)
 	$ProgressBar.max_value = HEALTH
 
 func _process(delta):
@@ -64,37 +64,46 @@ func _on_movement_timeout():
 		beam_cd -=1
 	if($Small_Attack.attack == [0,0,0,0]):
 		movement(new_velocity)
+		
 	else:
 		if(deciding_attack() == 1 && beam_cd == 0):
 			var dir = $Beam_Attack.attack.find($Beam_Attack.attack.max())
 			if(dir == 0):
 				$Small_Attack/Node2D/Up.visible = true
 				for x in $Beam_Attack.inarea[dir]:
-					x.do_damage(10)
+					x.do_damage(25)
 			elif(dir == 1):
 				$Small_Attack/Node2D/Down.visible = true
 				for x in $Beam_Attack.inarea[dir]:
-					x.do_damage(10)
+					x.do_damage(25)
 			elif(dir == 2):
 				$Small_Attack/Node2D/Left.visible = true
 				for x in $Beam_Attack.inarea[dir]:
-					x.do_damage(10)
+					x.do_damage(25)
 			elif(dir == 3):
 				$Small_Attack/Node2D/Right.visible = true
 				for x in $Beam_Attack.inarea[dir]:
-					x.do_damage(10)
+					x.do_damage(25)
 			$AnimatedSprite2D2.play()
 			beam_cd = 5
 		elif (deciding_attack() == 0):
 			var dirs = $Small_Attack.attack.find($Small_Attack.attack.max())
 			if(dirs == 3):
 				$Small_Attack/Small_attack_Right/Smol_Right.play()
+				for x in $Small_Attack.inarea[dirs]:
+					x.do_damage(10)
 			elif(dirs == 2):
 				$Small_Attack/Small_attack_Left/Smol_Left.play()
+				for x in $Small_Attack.inarea[dirs]:
+					x.do_damage(10)
 			elif(dirs == 0):
 				$Small_Attack/Small_attack_Up/Smol_up.play()
+				for x in $Small_Attack.inarea[dirs]:
+					x.do_damage(10)
 			elif(dirs == 1):
 				$Small_Attack/Small_attack_Down/Smol_Down.play()
+				for x in $Small_Attack.inarea[dirs]:
+					x.do_damage(10)
 
 			
 			
