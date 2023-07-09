@@ -125,8 +125,28 @@ func deciding_attack():
 
 
 func _on_animated_sprite_2d_2_animation_looped():
-	if($AnimatedSprite2D2.global_position.x < 288):
-		$AnimatedSprite2D2.position += Vector2(16,0)
-	else:
-		$AnimatedSprite2D2.position = Vector2(16,0)
-		$AnimatedSprite2D2.stop()
+	var dir = $Beam_Attack.attack.find($Beam_Attack.attack.max())
+	if(dir == 0):
+		if($AnimatedSprite2D2.global_position.y > 32):
+			$AnimatedSprite2D2.position.y -= 16
+		else:
+			$AnimatedSprite2D2.position = Vector2(0,0)
+			$AnimatedSprite2D2.stop()
+	elif(dir == 1):
+		if($AnimatedSprite2D2.global_position.y < 128):
+			$AnimatedSprite2D2.position.y += 16
+		else:
+			$AnimatedSprite2D2.position = Vector2(0,0)
+			$AnimatedSprite2D2.stop()
+	elif(dir == 2):
+		if($AnimatedSprite2D2.global_position.x > 32):
+			$AnimatedSprite2D2.position.x -= 16
+		else:
+			$AnimatedSprite2D2.position = Vector2(0,0)
+			$AnimatedSprite2D2.stop()
+	elif(dir == 3):
+		if($AnimatedSprite2D2.global_position.x < 272):
+			$AnimatedSprite2D2.position.x += 16
+		else:
+			$AnimatedSprite2D2.position = Vector2(0,0)
+			$AnimatedSprite2D2.stop()

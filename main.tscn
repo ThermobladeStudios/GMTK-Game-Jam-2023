@@ -11,11 +11,11 @@
 [node name="TileMap" parent="." instance=ExtResource("1_q8c1u")]
 
 [node name="Hero" parent="." node_paths=PackedStringArray("movement_target") instance=ExtResource("2_y1r2f")]
-position = Vector2(16, 48)
+position = Vector2(32, 80)
 movement_target = NodePath("../Marker2D")
 
 [node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(304, 48)
+position = Vector2(288, 80)
 
 [node name="Interface" parent="." instance=ExtResource("4_bvfwu")]
 offset_top = 163.0
