@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://04w7akrfllgh"]
+[gd_scene load_steps=7 format=3 uid="uid://dftuah08wj7sb"]
 
 [ext_resource type="PackedScene" uid="uid://0hwjm7ci2mai" path="res://Levels/Level.tscn" id="1_q8c1u"]
 [ext_resource type="PackedScene" uid="uid://dw37rc236xqwp" path="res://Hero/Bot_Hero.tscn" id="2_y1r2f"]
 [ext_resource type="PackedScene" uid="uid://cjt4uxnous8l2" path="res://Placables/Minions/Melee_Minion.tscn" id="3_vgp0v"]
 [ext_resource type="PackedScene" uid="uid://dxhdlcuv0cfcl" path="res://Player/Player_UI.tscn" id="4_bvfwu"]
 [ext_resource type="PackedScene" uid="uid://dgnj7afknaajy" path="res://Placables/Obastacles/Obstacle.tscn" id="5_u7o2b"]
+[ext_resource type="Script" path="res://Panning.gd" id="6_qau1g"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -45,3 +46,7 @@ offset_bottom = 128.0
 
 [node name="Node2D" parent="." instance=ExtResource("5_u7o2b")]
 position = Vector2(144, 64)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(160, 90)
+script = ExtResource("6_qau1g")
