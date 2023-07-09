@@ -27,4 +27,8 @@ position = Vector2(144, 64)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(160, 90)
+limit_left = -160
+limit_top = -90
+limit_right = 480
+limit_bottom = 270
 script = ExtResource("6_qau1g")

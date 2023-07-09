@@ -1,9 +1,74 @@
-[gd_scene load_steps=3 format=3 uid="uid://dxhdlcuv0cfcl"]
+[gd_scene load_steps=13 format=3 uid="uid://dxhdlcuv0cfcl"]
 
-[ext_resource type="PackedScene" uid="uid://csjr38t0fvhja" path="res://Player/button.tscn" id="2_ou7b6"]
+[ext_resource type="Texture2D" uid="uid://b2bj6nwj7qtwv" path="res://Player/coin_gold.png" id="2_7lm6j"]
+[ext_resource type="PackedScene" path="res://Player/button.tscn" id="2_ou7b6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d6hi1"]
 bg_color = Color(0.145098, 0.0745098, 0.101961, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hxpf4"]
+atlas = ExtResource("2_7lm6j")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eogi6"]
+atlas = ExtResource("2_7lm6j")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rmay1"]
+atlas = ExtResource("2_7lm6j")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cqjsk"]
+atlas = ExtResource("2_7lm6j")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j1m7f"]
+atlas = ExtResource("2_7lm6j")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f6vf2"]
+atlas = ExtResource("2_7lm6j")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0xx3o"]
+atlas = ExtResource("2_7lm6j")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yta3k"]
+atlas = ExtResource("2_7lm6j")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cq4ji"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hxpf4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eogi6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rmay1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cqjsk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j1m7f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f6vf2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0xx3o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yta3k")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.0
+}]
 
 [node name="Interface" type="Control"]
 custom_minimum_size = Vector2(200, 0)
@@ -37,3 +102,8 @@ layout_mode = 2
 
 [node name="Button3" parent="Panel/GridContainer" instance=ExtResource("2_ou7b6")]
 layout_mode = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_cq4ji")
+autoplay = "default"
+frame_progress = 0.0672525
