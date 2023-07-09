@@ -30,11 +30,9 @@ func zoom_out() -> void:
 func _unhandled_input(event: InputEvent) -> void:
 		if event is InputEventMouseMotion:
 			if event.button_mask == MOUSE_BUTTON_MASK_RIGHT:
-				print(event)
-				position -= event.relative * zoom
+				position -= event.relative
 		if event is InputEventMouseButton:
 			if event.is_pressed():
-				#zoom in
 				if event.button_index == MOUSE_BUTTON_WHEEL_UP:
 					zoom_out()
 				if event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
