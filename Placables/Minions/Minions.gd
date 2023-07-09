@@ -31,6 +31,7 @@ func _process(delta):
 func do_damage(damage):
 	Health -= damage
 	$Damage.text = str(damage)
+	$Damage.visible = true
 	$Damage.modulate = Color.WHITE
 	$Damage.position = Vector2(3, -6)
 	var tween = get_tree().create_tween().set_parallel(true)
