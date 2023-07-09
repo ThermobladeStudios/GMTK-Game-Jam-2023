@@ -1,10 +1,44 @@
-[gd_scene load_steps=2 format=3 uid="uid://chty3kk6dwgac"]
+[gd_scene load_steps=6 format=3 uid="uid://0eoyxcorusbx"]
 
-[ext_resource type="Texture2D" uid="uid://cvu3el60peo1b" path="res://icon.svg" id="1_02esf"]
+[ext_resource type="Texture2D" uid="uid://b3t2id5h30e4y" path="res://Player/NextTurn.png" id="1_dqo1a"]
+[ext_resource type="Script" path="res://Player/next_turn.gd" id="1_rysun"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4fynq"]
+atlas = ExtResource("1_dqo1a")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n3eps"]
+atlas = ExtResource("1_dqo1a")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uh1ky"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4fynq")
+}],
+"loop": true,
+"name": &"pressed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n3eps")
+}],
+"loop": true,
+"name": &"unpressed",
+"speed": 5.0
+}]
 
 [node name="Button" type="Button"]
-offset_left = 170.0
-offset_top = 26.0
-offset_right = 306.0
-offset_bottom = 162.0
-icon = ExtResource("1_02esf")
+offset_left = 40.0
+offset_top = 205.0
+offset_right = 64.0
+offset_bottom = 229.0
+action_mode = 0
+script = ExtResource("1_rysun")
+
+[node name="Animate" type="AnimatedSprite2D" parent="."]
+position = Vector2(12, 12)
+sprite_frames = SubResource("SpriteFrames_uh1ky")
+animation = &"unpressed"
