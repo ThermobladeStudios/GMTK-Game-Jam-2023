@@ -46,7 +46,7 @@ func _unhandled_input(event):
 				if Tile.Moved == false:
 					SelectedMinion = Tile
 					SelectedMinionPosition = possible_position
-					for x in Json[Tile.Name]["AttackArea"]:
+					for x in Json[Tile.Name]["MoveArea"]:
 						if possible_position.x - x[0] >= LeftCorner.x and possible_position.x - x[0] <= RightCorner.x and possible_position.y - x[1] >= LeftCorner.y and possible_position.y - x[1] <= RightCorner.y and Map[possible_position.y - x[1]][possible_position.x - x[0]] == null:
 							set_cell(4, possible_position - Vector2i(x[0], x[1]), 5, Vector2i(0, 0), 0)
 				elif Tile.Attacked == false:
