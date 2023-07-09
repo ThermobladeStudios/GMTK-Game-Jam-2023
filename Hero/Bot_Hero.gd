@@ -15,6 +15,8 @@ var new_velocity : Vector2
 
 var attacktype
 
+var beam_cd = 5
+
 
 func _ready():
 	navigation_agent.path_desired_distance = 10.0
@@ -58,24 +60,47 @@ func set_movement_target(target_point: Vector2):
 	
 
 func _on_movement_timeout():
-	print(deciding_attack())
+	if(beam_cd > 0):
+		beam_cd -=1
 	if($Small_Attack.attack == [0,0,0,0]):
 		movement(new_velocity)
 	else:
-		for x in 4:
-			if($Small_Attack.attack[x] == 1):
-				if (x == 0):
-					pass
-					#print("enemy Up")
-				elif(x == 1):
-					pass
-					#print("enemy Down")
-				elif(x == 2):
-					pass
-					#print("enemy Left")
-				elif(x == 3):
-					pass
-					#print("enemy Right")
+		if(deciding_attack() == 0):
+			for x in 4:
+				if($Small_Attack.attack[x] == 1):
+					if (x == 0):
+						$Small_Attack/Node2D/Up.visible = true
+						continue
+						#print("enemy Up")
+					elif(x == 1):
+						$Small_Attack/Node2D/Down.visible = true
+						continue
+						#print("enemy Down")s
+					elif(x == 2):
+						$Small_Attack/Node2D/Left.visible = true
+						continue
+						#print("enemy Left")
+					elif(x == 3):
+						$Small_Attack/Node2D/Right.visible = true
+						continue
+						#print("enemy Right")
+		if(deciding_attack() == 1 && beam_cd == 0):
+			var dir = $Beam_Attack.attack.find($Beam_Attack.attack.max())
+			if(dir == 0):
+				for x in $Beam_Attack.inarea[dir]:
+					x.do_damage(10)
+			elif(dir == 1):
+				for x in $Beam_Attack.inarea[dir]:
+					x.do_damage(10)
+			elif(dir == 2):
+				for x in $Beam_Attack.inarea[dir]:
+					x.do_damage(10)
+			elif(dir == 3):
+				for x in $Beam_Attack.inarea[dir]:
+					x.do_damage(10)
+			$AnimatedSprite2D2.play()
+			beam_cd = 5
+			
 
 
 func deciding_attack():
@@ -84,17 +109,24 @@ func deciding_attack():
 	var tot_minions = get_tree().get_nodes_in_group("minions").size()
 
 
-	var sweight = (satk/tot_minions)*100
+	var sweight = ((satk/tot_minions)*100) + 20
 	var bweight = (batk/tot_minions)*100
 	var attacktype = randi_range(1,100)
 	if(attacktype < sweight):
-		print(attacktype)
-		return ("small attack")
+		return (0)
 
 	elif(attacktype > sweight):
-		return("beam attack")
+		return(1)
 	
 	
 	
 
 
+
+
+func _on_animated_sprite_2d_2_animation_looped():
+	if($AnimatedSprite2D2.global_position.x < 288):
+		$AnimatedSprite2D2.position += Vector2(16,0)
+	else:
+		$AnimatedSprite2D2.position = Vector2(16,0)
+		$AnimatedSprite2D2.stop()

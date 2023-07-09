@@ -1,14 +1,50 @@
-[gd_scene load_steps=16 format=3 uid="uid://dw37rc236xqwp"]
+[gd_scene load_steps=29 format=3 uid="uid://dw37rc236xqwp"]
 
 [ext_resource type="Script" path="res://Hero/Bot_Hero.gd" id="1_oc3kn"]
 [ext_resource type="Script" path="res://Hero/Beam_Attack.gd" id="2_ckern"]
+[ext_resource type="Texture2D" uid="uid://ebicjqj3f4hc" path="res://Hero/hero.png" id="2_e6fcu"]
 [ext_resource type="Script" path="res://Hero/Small_Attack.gd" id="2_ehfhu"]
 [ext_resource type="Texture2D" uid="uid://cu6f44p6kr0hm" path="res://Placables/Obastacles/Caution..png" id="4_s2ldx"]
+[ext_resource type="Texture2D" uid="uid://f2bt40xqkyg5" path="res://Hero/Beam.png" id="6_ufdlj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u7o58"]
 size = Vector2(8, 8)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_aajil"]
+atlas = ExtResource("2_e6fcu")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y1iuo"]
+atlas = ExtResource("2_e6fcu")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4c1p7"]
+atlas = ExtResource("2_e6fcu")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cpask"]
+atlas = ExtResource("2_e6fcu")
+region = Rect2(48, 0, 16, 16)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_dpx3j"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aajil")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y1iuo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4c1p7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cpask")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_kn8u4"]
 
@@ -36,6 +72,56 @@ size = Vector2(254, 14)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uojpf"]
 size = Vector2(14, 14)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_allei"]
+atlas = ExtResource("6_ufdlj")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mcc3d"]
+atlas = ExtResource("6_ufdlj")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_87c4b"]
+atlas = ExtResource("6_ufdlj")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mllwl"]
+atlas = ExtResource("6_ufdlj")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2xmi0"]
+atlas = ExtResource("6_ufdlj")
+region = Rect2(48, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n11ut"]
+atlas = ExtResource("6_ufdlj")
+region = Rect2(0, 48, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_o7bx2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_allei")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mcc3d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_87c4b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mllwl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2xmi0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n11ut")
+}],
+"loop": true,
+"name": &"default",
+"speed": 30.0
+}]
+
 [node name="Hero" type="Area2D" node_paths=PackedStringArray("navigation_agent")]
 script = ExtResource("1_oc3kn")
 navigation_agent = NodePath("NavigationAgent2D")
@@ -46,8 +132,9 @@ shape = SubResource("RectangleShape2D_u7o58")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(8, 8)
-scale = Vector2(16, 16)
 sprite_frames = SubResource("SpriteFrames_dpx3j")
+autoplay = "default"
+frame_progress = 0.819601
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 debug_enabled = true
@@ -79,13 +166,13 @@ script = ExtResource("2_ckern")
 [node name="Beam_attack_Up" type="Area2D" parent="Beam_Attack"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Beam_Attack/Beam_attack_Up"]
-position = Vector2(8, 144)
+position = Vector2(8, -128)
 shape = SubResource("RectangleShape2D_nca8i")
 
 [node name="Beam_attack_Down" type="Area2D" parent="Beam_Attack"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Beam_Attack/Beam_attack_Down"]
-position = Vector2(8, -128)
+position = Vector2(8, 144)
 shape = SubResource("RectangleShape2D_2opw7")
 
 [node name="Beam_attack_Left" type="Area2D" parent="Beam_Attack"]
@@ -104,51 +191,57 @@ shape = SubResource("RectangleShape2D_j6jjw")
 script = ExtResource("2_ehfhu")
 
 [node name="Small_attack_Up" type="Area2D" parent="Small_Attack"]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Small_Attack/Small_attack_Up"]
 position = Vector2(8, -8)
 shape = SubResource("RectangleShape2D_uojpf")
 
 [node name="Small_attack_Down" type="Area2D" parent="Small_Attack"]
-visible = false
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Small_Attack/Small_attack_Down"]
 position = Vector2(8, 24)
 shape = SubResource("RectangleShape2D_uojpf")
 
 [node name="Small_attack_Left" type="Area2D" parent="Small_Attack"]
-visible = false
 
 [node name="CollisionShape2D1" type="CollisionShape2D" parent="Small_Attack/Small_attack_Left"]
 position = Vector2(-8, 8)
 shape = SubResource("RectangleShape2D_uojpf")
 
 [node name="Small_attack_Right" type="Area2D" parent="Small_Attack"]
-visible = false
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Small_Attack/Small_attack_Right"]
 position = Vector2(24, 8)
 shape = SubResource("RectangleShape2D_uojpf")
 
 [node name="Node2D" type="Node2D" parent="Small_Attack"]
-visible = false
 
-[node name="Caution_" type="Sprite2D" parent="Small_Attack/Node2D"]
+[node name="Right" type="Sprite2D" parent="Small_Attack/Node2D"]
+visible = false
 position = Vector2(24, 8)
 texture = ExtResource("4_s2ldx")
 
-[node name="Caution_2" type="Sprite2D" parent="Small_Attack/Node2D"]
+[node name="Up" type="Sprite2D" parent="Small_Attack/Node2D"]
+visible = false
 position = Vector2(8, -8)
 texture = ExtResource("4_s2ldx")
 
-[node name="Caution_3" type="Sprite2D" parent="Small_Attack/Node2D"]
+[node name="Left" type="Sprite2D" parent="Small_Attack/Node2D"]
+visible = false
 position = Vector2(-8, 8)
 texture = ExtResource("4_s2ldx")
 
-[node name="Caution_4" type="Sprite2D" parent="Small_Attack/Node2D"]
+[node name="Down" type="Sprite2D" parent="Small_Attack/Node2D"]
+visible = false
 position = Vector2(8, 24)
 texture = ExtResource("4_s2ldx")
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
+position = Vector2(16, 0)
+sprite_frames = SubResource("SpriteFrames_o7bx2")
+frame = 5
+frame_progress = 1.0
+centered = false
 
 [connection signal="timeout" from="movement" to="." method="_on_movement_timeout"]
 [connection signal="area_entered" from="Beam_Attack/Beam_attack_Up" to="Beam_Attack" method="_on_beam_attack_up_area_entered"]
@@ -167,3 +260,4 @@ texture = ExtResource("4_s2ldx")
 [connection signal="area_exited" from="Small_Attack/Small_attack_Left" to="Small_Attack" method="_on_small_attack_left_area_exited"]
 [connection signal="area_entered" from="Small_Attack/Small_attack_Right" to="Small_Attack" method="_on_small_attack_right_area_entered"]
 [connection signal="area_exited" from="Small_Attack/Small_attack_Right" to="Small_Attack" method="_on_small_attack_right_area_exited"]
+[connection signal="animation_looped" from="AnimatedSprite2D2" to="." method="_on_animated_sprite_2d_2_animation_looped"]
