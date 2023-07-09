@@ -14,3 +14,8 @@ func _process(delta):
 	
 	
 	
+
+
+func _on_next_turn_pressed():
+	var hero_turn = get_tree().get_root().get_child(1).get_node("Hero")
+	hero_turn.nextTurn()

@@ -190,8 +190,6 @@ theme_override_styles/background = SubResource("StyleBoxFlat_p1rro")
 theme_override_styles/fill = SubResource("StyleBoxFlat_7rwnq")
 show_percentage = false
 
-[node name="movement" type="Timer" parent="."]
-
 [node name="arrows" type="Node2D" parent="."]
 
 [node name="Area2D" type="Area2D" parent="arrows"]
@@ -299,7 +297,6 @@ texture = ExtResource("4_s2ldx")
 sprite_frames = SubResource("SpriteFrames_o7bx2")
 centered = false
 
-[connection signal="timeout" from="movement" to="." method="_on_movement_timeout"]
 [connection signal="area_entered" from="Beam_Attack/Beam_attack_Up" to="Beam_Attack" method="_on_beam_attack_up_area_entered"]
 [connection signal="area_exited" from="Beam_Attack/Beam_attack_Up" to="Beam_Attack" method="_on_beam_attack_up_area_exited"]
 [connection signal="area_entered" from="Beam_Attack/Beam_attack_Down" to="Beam_Attack" method="_on_beam_attack_down_area_entered"]
