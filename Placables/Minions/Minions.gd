@@ -27,8 +27,12 @@ func _process(delta):
 	$ProgressBar.value = Health
 	if(Health <= 0):
 		self.queue_free()
-	
 
 func do_damage(damage):
 	Health -= damage
-
+	$Damage.text = str(damage)
+	$Damage.modulate = Color.WHITE
+	$Damage.position = Vector2(3, -6)
+	var tween = get_tree().create_tween().set_parallel(true)
+	tween.tween_property($Damage, "modulate", Color.TRANSPARENT, 0.5)
+	tween.tween_property($Damage, "position", $Damage.position - Vector2(0, 5), 0.5)
