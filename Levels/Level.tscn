@@ -6,18 +6,18 @@
 [ext_resource type="Texture2D" uid="uid://clxr4h7jln18b" path="res://Levels/Transparent2.png" id="2_vwwyh"]
 [ext_resource type="Texture2D" uid="uid://0voewpy72vcv" path="res://Levels/DungeonTilesExtra.png" id="4_nuc4u"]
 [ext_resource type="Script" path="res://Levels/Levels.gd" id="4_xpkxh"]
-[ext_resource type="Texture2D" uid="uid://dbpf14r10hedg" path="res://Player/ValidMove.png" id="5_xk8gh"]
+[ext_resource type="Texture2D" uid="uid://c38c48xlg17v7" path="res://Player/ValidMove.png" id="5_xk8gh"]
 [ext_resource type="Texture2D" uid="uid://kylt8iukqqs0" path="res://Player/ValidAttack.png" id="7_emh1m"]
 
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_emt7f"]
-vertices = PackedVector2Array(3.0625, 3.25, 1.5625, 8, -1.3125, 8, -2.4375, 2.25, -3.0625, -3.875, -8, 0.625, -8, -2.125, 8, -2.125, 8, 0.875, 3.6875, -4, -1.1875, -8, 1.8125, -8)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32Array(3, 5, 6, 4), PackedInt32Array(7, 8, 0, 4, 9), PackedInt32Array(9, 4, 10, 11)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(-8, -2.125, -3.0625, -3.875, -1.1875, -8, 1.8125, -8, 3.6875, -4, 8, -2.125, 8, 0.875, 3.0625, 3.25, 1.5625, 8, -1.3125, 8, -2.4375, 2.25, -8, 0.625)])
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_xj2j1"]
+vertices = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)])
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_le23r"]
 texture = ExtResource("1_xe6e0")
 0:0/0 = 0
-0:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_emt7f")
+0:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_xj2j1")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kaoqu"]
 texture = ExtResource("2_vwwyh")

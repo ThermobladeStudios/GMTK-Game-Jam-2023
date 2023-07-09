@@ -6,7 +6,7 @@ var Damage = 10
 var File = FileAccess.get_file_as_string("res://Placables/Minions/Minions.json")
 var Json = JSON.parse_string(File)
 
-var Health = 1000
+var Health = Global.Health
 
 var new_velocity : Vector2
 @onready var currPos = self.position
