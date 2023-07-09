@@ -46,6 +46,7 @@ func _unhandled_input(event):
 			elif !obs_check:
 				var Tile = Map[possible_position.y][possible_position.x]
 				if Tile and Tile.Name in Json:
+					clear_layer(4)
 					if Tile.Moved == false:
 						SelectedMinion = Tile
 						SelectedMinionPosition = possible_position

@@ -141,7 +141,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Minion" type="Area2D" groups=["minions"]]
+[node name="Minion" type="Area2D" groups=["Minions"]]
 script = ExtResource("1_xl2vd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
