@@ -1,44 +1,27 @@
-[gd_scene load_steps=6 format=3 uid="uid://0eoyxcorusbx"]
+[gd_scene load_steps=6 format=3 uid="uid://fblrrtclo4fj"]
 
 [ext_resource type="Texture2D" uid="uid://b3t2id5h30e4y" path="res://Player/NextTurn.png" id="1_dqo1a"]
-[ext_resource type="Script" path="res://Player/next_turn.gd" id="1_rysun"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_4fynq"]
-atlas = ExtResource("1_dqo1a")
-region = Rect2(24, 0, 24, 24)
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8n6ou"]
+texture = ExtResource("1_dqo1a")
+region_rect = Rect2(0, 0, 24, 24)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_n3eps"]
-atlas = ExtResource("1_dqo1a")
-region = Rect2(0, 0, 24, 24)
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_g73gn"]
+texture = ExtResource("1_dqo1a")
+region_rect = Rect2(24, 0, 24, 24)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_uh1ky"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4fynq")
-}],
-"loop": true,
-"name": &"pressed",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_n3eps")
-}],
-"loop": true,
-"name": &"unpressed",
-"speed": 5.0
-}]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_in0bj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tub0k"]
 
 [node name="Button" type="Button"]
-offset_left = 40.0
-offset_top = 205.0
-offset_right = 64.0
-offset_bottom = 229.0
+offset_left = -34.0
+offset_top = 76.0
+offset_right = -10.0
+offset_bottom = 100.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_8n6ou")
+theme_override_styles/hover = SubResource("StyleBoxTexture_8n6ou")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_g73gn")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_in0bj")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_tub0k")
 action_mode = 0
-script = ExtResource("1_rysun")
-
-[node name="Animate" type="AnimatedSprite2D" parent="."]
-position = Vector2(12, 12)
-sprite_frames = SubResource("SpriteFrames_uh1ky")
-animation = &"unpressed"

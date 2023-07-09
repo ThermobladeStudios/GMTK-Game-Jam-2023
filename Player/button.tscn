@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://csjr38t0fvhja"]
+[gd_scene load_steps=7 format=3 uid="uid://c4y6igyvy3dk1"]
 
 [ext_resource type="Texture2D" uid="uid://dq2sdkjpbexbk" path="res://Player/Minion_card.png" id="1_4tcdf"]
 [ext_resource type="Texture2D" uid="uid://ehppac168mpy" path="res://Player/Minion_card_selected.png" id="2_njxut"]

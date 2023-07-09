@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://dxhdlcuv0cfcl"]
+[gd_scene load_steps=14 format=3 uid="uid://dxhdlcuv0cfcl"]
 
 [ext_resource type="Texture2D" uid="uid://b2bj6nwj7qtwv" path="res://Player/coin_gold.png" id="2_7lm6j"]
-[ext_resource type="PackedScene" path="res://Player/button.tscn" id="2_ou7b6"]
+[ext_resource type="PackedScene" uid="uid://c4y6igyvy3dk1" path="res://Player/button.tscn" id="2_ou7b6"]
+[ext_resource type="PackedScene" uid="uid://fblrrtclo4fj" path="res://Player/next_turn.tscn" id="3_un3st"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d6hi1"]
 bg_color = Color(0.145098, 0.0745098, 0.101961, 1)
@@ -103,7 +104,15 @@ layout_mode = 2
 [node name="Button3" parent="Panel/GridContainer" instance=ExtResource("2_ou7b6")]
 layout_mode = 2
 
+[node name="NextTurn" parent="." instance=ExtResource("3_un3st")]
+layout_mode = 0
+offset_left = 34.0
+offset_top = -43.0
+offset_right = 58.0
+offset_bottom = -19.0
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(18, 24)
 sprite_frames = SubResource("SpriteFrames_cq4ji")
 autoplay = "default"
 frame_progress = 0.0672525
