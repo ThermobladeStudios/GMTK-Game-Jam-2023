@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://clxr4h7jln18b" path="res://Levels/Transparent2.png" id="2_vwwyh"]
 [ext_resource type="Texture2D" uid="uid://0voewpy72vcv" path="res://Levels/DungeonTilesExtra.png" id="4_nuc4u"]
 [ext_resource type="Script" path="res://Levels/Levels.gd" id="4_xpkxh"]
-[ext_resource type="Texture2D" uid="uid://c38c48xlg17v7" path="res://Player/ValidMove.png" id="5_xk8gh"]
+[ext_resource type="Texture2D" uid="uid://dbpf14r10hedg" path="res://Player/ValidMove.png" id="5_xk8gh"]
 [ext_resource type="Texture2D" uid="uid://kylt8iukqqs0" path="res://Player/ValidAttack.png" id="7_emh1m"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_xj2j1"]

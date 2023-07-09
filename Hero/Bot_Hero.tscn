@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://dw37rc236xqwp"]
+[gd_scene load_steps=32 format=3 uid="uid://dw37rc236xqwp"]
 
 [ext_resource type="Script" path="res://Hero/Bot_Hero.gd" id="1_oc3kn"]
 [ext_resource type="Script" path="res://Hero/Beam_Attack.gd" id="2_ckern"]
@@ -46,14 +46,6 @@ animations = [{
 "name": &"default",
 "speed": 5.0
 }]
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_kn8u4"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p1rro"]
-bg_color = Color(0.921569, 0.223529, 0.231373, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7rwnq"]
-bg_color = Color(0, 1, 0.32549, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x21ue"]
 size = Vector2(14, 47)
@@ -176,17 +168,6 @@ frame_progress = 0.428155
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 
-[node name="ProgressBar" type="ProgressBar" parent="."]
-material = SubResource("CanvasItemMaterial_kn8u4")
-offset_left = -11.0
-offset_top = 9.0
-offset_right = -7.0
-offset_bottom = 67.0
-scale = Vector2(5.69192, 0.0517439)
-theme_override_styles/background = SubResource("StyleBoxFlat_p1rro")
-theme_override_styles/fill = SubResource("StyleBoxFlat_7rwnq")
-show_percentage = false
-
 [node name="arrows" type="Node2D" parent="."]
 position = Vector2(-8, -8)
 
@@ -294,9 +275,7 @@ position = Vector2(8, 24)
 texture = ExtResource("4_s2ldx")
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
-position = Vector2(-8, -8)
 sprite_frames = SubResource("SpriteFrames_o7bx2")
-centered = false
 
 [connection signal="area_entered" from="Beam_Attack/Beam_attack_Up" to="Beam_Attack" method="_on_beam_attack_up_area_entered"]
 [connection signal="area_exited" from="Beam_Attack/Beam_attack_Up" to="Beam_Attack" method="_on_beam_attack_up_area_exited"]
