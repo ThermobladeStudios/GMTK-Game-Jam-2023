@@ -167,11 +167,9 @@ script = ExtResource("1_oc3kn")
 navigation_agent = NodePath("NavigationAgent2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(8, 8)
 shape = SubResource("RectangleShape2D_u7o58")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(8, 8)
 sprite_frames = SubResource("SpriteFrames_dpx3j")
 autoplay = "default"
 frame_progress = 0.428155
@@ -180,16 +178,17 @@ frame_progress = 0.428155
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
 material = SubResource("CanvasItemMaterial_kn8u4")
-offset_left = -3.0
-offset_top = 17.0
-offset_right = 1.0
-offset_bottom = 75.0
+offset_left = -11.0
+offset_top = 9.0
+offset_right = -7.0
+offset_bottom = 67.0
 scale = Vector2(5.69192, 0.0517439)
 theme_override_styles/background = SubResource("StyleBoxFlat_p1rro")
 theme_override_styles/fill = SubResource("StyleBoxFlat_7rwnq")
 show_percentage = false
 
 [node name="arrows" type="Node2D" parent="."]
+position = Vector2(-8, -8)
 
 [node name="Area2D" type="Area2D" parent="arrows"]
 
@@ -198,6 +197,7 @@ position = Vector2(56, 8)
 shape = SubResource("RectangleShape2D_x21ue")
 
 [node name="Beam_Attack" type="Node2D" parent="."]
+position = Vector2(-8, -8)
 script = ExtResource("2_ckern")
 
 [node name="Beam_attack_Up" type="Area2D" parent="Beam_Attack"]
@@ -225,6 +225,7 @@ position = Vector2(144, 8)
 shape = SubResource("RectangleShape2D_j6jjw")
 
 [node name="Small_Attack" type="Node2D" parent="."]
+position = Vector2(-8, -8)
 script = ExtResource("2_ehfhu")
 
 [node name="Small_attack_Up" type="Area2D" parent="Small_Attack"]
@@ -293,6 +294,7 @@ position = Vector2(8, 24)
 texture = ExtResource("4_s2ldx")
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
+position = Vector2(-8, -8)
 sprite_frames = SubResource("SpriteFrames_o7bx2")
 centered = false
 
