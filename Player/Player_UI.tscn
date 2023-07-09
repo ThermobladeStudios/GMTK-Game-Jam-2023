@@ -181,6 +181,7 @@ scale = Vector2(0.7, 0.7)
 texture = ExtResource("10_uf8c7")
 
 [node name="Obstacle" type="TextureRect" parent="Mode"]
+visible = false
 layout_mode = 0
 offset_left = 60.0
 offset_top = 9.0
