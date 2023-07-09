@@ -5,12 +5,12 @@
 [ext_resource type="Texture2D" uid="uid://bw0vsnf1pe2at" path="res://Player/counter.png" id="3_716ni"]
 [ext_resource type="PackedScene" uid="uid://fblrrtclo4fj" path="res://Player/next_turn.tscn" id="3_un3st"]
 [ext_resource type="Texture2D" uid="uid://i1hm8tpckt21" path="res://Player/HeroBarPortrait.png" id="6_xugri"]
-[ext_resource type="PackedScene" uid="uid://cjt4uxnous8l2" path="res://Placables/Minions/Melee_Minion.tscn" id="7_8nfln"]
 [ext_resource type="Texture2D" uid="uid://cawyjhwg76s2x" path="res://Player/Bar.png" id="7_rv6pt"]
-[ext_resource type="PackedScene" uid="uid://dgnj7afknaajy" path="res://Placables/Obastacles/Obstacle.tscn" id="8_6mgpy"]
 [ext_resource type="Texture2D" uid="uid://b2scx6o8tmwra" path="res://Player/Health.png" id="8_sig73"]
 [ext_resource type="Texture2D" uid="uid://cwjic5y8anx34" path="res://Player/mode.png" id="9_eynti"]
 [ext_resource type="Texture2D" uid="uid://bla0ppycvmdoc" path="res://Player/Inventory Bar.png" id="10_hguc1"]
+[ext_resource type="Texture2D" uid="uid://bxnu4wpxanj0w" path="res://Player/SkeletonIcon.png" id="10_uf8c7"]
+[ext_resource type="Texture2D" uid="uid://dyggcre5xgesu" path="res://Player/ObstacleIcon.png" id="11_07xh0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hxpf4"]
 atlas = ExtResource("2_7lm6j")
@@ -171,10 +171,20 @@ text = "Mode
 label_settings = SubResource("LabelSettings_grhpr")
 horizontal_alignment = 1
 
-[node name="Obstacle" parent="Mode" instance=ExtResource("8_6mgpy")]
-position = Vector2(61, 10)
-scale = Vector2(1.5, 1.5)
+[node name="Minion" type="TextureRect" parent="Mode"]
+layout_mode = 0
+offset_left = 60.0
+offset_top = 9.0
+offset_right = 100.0
+offset_bottom = 49.0
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("10_uf8c7")
 
-[node name="Minion" parent="Mode" instance=ExtResource("7_8nfln")]
-position = Vector2(61, 10)
-scale = Vector2(1.5, 1.5)
+[node name="Obstacle" type="TextureRect" parent="Mode"]
+layout_mode = 0
+offset_left = 60.0
+offset_top = 9.0
+offset_right = 100.0
+offset_bottom = 49.0
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("11_07xh0")

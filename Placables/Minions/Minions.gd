@@ -1,7 +1,7 @@
 extends Area2D
 
 var Name
-var Health
+var Health = 1
 var Attack
 var Defense
 var Position
