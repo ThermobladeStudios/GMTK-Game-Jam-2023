@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://dgnj7afknaajy"]
+[gd_scene load_steps=7 format=3 uid="uid://dgnj7afknaajy"]
 
 [ext_resource type="Texture2D" uid="uid://ds1i74o44lk62" path="res://Placables/Obastacles/Dungeon_Tileset.png" id="1_ko3ub"]
+[ext_resource type="Script" path="res://Placables/Obastacles/Obstacle.gd" id="1_o17oi"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nh7wq"]
 atlas = ExtResource("1_ko3ub")
@@ -33,6 +34,7 @@ animations = [{
 size = Vector2(16, 16)
 
 [node name="Node2D" type="Area2D"]
+script = ExtResource("1_o17oi")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(8, 8)
