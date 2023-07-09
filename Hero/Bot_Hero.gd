@@ -85,8 +85,21 @@ func _on_movement_timeout():
 					x.do_damage(10)
 			$AnimatedSprite2D2.play()
 			beam_cd = 5
-			
+		elif (deciding_attack() == 0):
+			var dirs = $Small_Attack.attack.find($Small_Attack.attack.max())
+			if(dirs == 3):
+				$Small_Attack/Small_attack_Right/Smol_Right.play()
+			elif(dirs == 2):
+				$Small_Attack/Small_attack_Left/Smol_Left.play()
+			elif(dirs == 0):
+				$Small_Attack/Small_attack_Up/Smol_up.play()
+			elif(dirs == 1):
+				$Small_Attack/Small_attack_Down/Smol_Down.play()
 
+			
+			
+			
+			
 
 func deciding_attack():
 	var satk :float = $Small_Attack.get_weight()

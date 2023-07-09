@@ -141,7 +141,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Minion" type="Area2D"]
+[node name="Minion" type="Area2D" groups=["minions"]]
 script = ExtResource("1_xl2vd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -152,3 +152,4 @@ shape = SubResource("RectangleShape2D_aegne")
 position = Vector2(8, 8)
 sprite_frames = SubResource("SpriteFrames_4mqkb")
 animation = &"Skeleton1"
+autoplay = "Skeleton1"

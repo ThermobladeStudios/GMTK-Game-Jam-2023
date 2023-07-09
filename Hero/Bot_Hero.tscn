@@ -1,10 +1,11 @@
-[gd_scene load_steps=29 format=3 uid="uid://dw37rc236xqwp"]
+[gd_scene load_steps=35 format=3 uid="uid://dw37rc236xqwp"]
 
 [ext_resource type="Script" path="res://Hero/Bot_Hero.gd" id="1_oc3kn"]
 [ext_resource type="Script" path="res://Hero/Beam_Attack.gd" id="2_ckern"]
 [ext_resource type="Texture2D" uid="uid://ebicjqj3f4hc" path="res://Hero/hero.png" id="2_e6fcu"]
 [ext_resource type="Script" path="res://Hero/Small_Attack.gd" id="2_ehfhu"]
 [ext_resource type="Texture2D" uid="uid://cu6f44p6kr0hm" path="res://Placables/Obastacles/Caution..png" id="4_s2ldx"]
+[ext_resource type="Texture2D" uid="uid://chavjprap2oba" path="res://Hero/schwing.png" id="6_6ank1"]
 [ext_resource type="Texture2D" uid="uid://f2bt40xqkyg5" path="res://Hero/Beam.png" id="6_ufdlj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u7o58"]
@@ -71,6 +72,45 @@ size = Vector2(254, 14)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uojpf"]
 size = Vector2(14, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gesp1"]
+atlas = ExtResource("6_ufdlj")
+region = Rect2(16, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eu3ro"]
+atlas = ExtResource("6_6ank1")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fme5o"]
+atlas = ExtResource("6_6ank1")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6dulh"]
+atlas = ExtResource("6_6ank1")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3rdom"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gesp1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eu3ro")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fme5o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6dulh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gesp1")
+}],
+"loop": false,
+"name": &"default",
+"speed": 12.0
+}]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n11ut"]
 atlas = ExtResource("6_ufdlj")
@@ -196,11 +236,21 @@ script = ExtResource("2_ehfhu")
 position = Vector2(8, -8)
 shape = SubResource("RectangleShape2D_uojpf")
 
+[node name="Smol_up" type="AnimatedSprite2D" parent="Small_Attack/Small_attack_Up"]
+position = Vector2(8, -8)
+rotation = -1.57079
+sprite_frames = SubResource("SpriteFrames_3rdom")
+
 [node name="Small_attack_Down" type="Area2D" parent="Small_Attack"]
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Small_Attack/Small_attack_Down"]
 position = Vector2(8, 24)
 shape = SubResource("RectangleShape2D_uojpf")
+
+[node name="Smol_Down" type="AnimatedSprite2D" parent="Small_Attack/Small_attack_Down"]
+position = Vector2(8, 24)
+rotation = 1.57079
+sprite_frames = SubResource("SpriteFrames_3rdom")
 
 [node name="Small_attack_Left" type="Area2D" parent="Small_Attack"]
 
@@ -208,11 +258,20 @@ shape = SubResource("RectangleShape2D_uojpf")
 position = Vector2(-8, 8)
 shape = SubResource("RectangleShape2D_uojpf")
 
+[node name="Smol_Left" type="AnimatedSprite2D" parent="Small_Attack/Small_attack_Left"]
+position = Vector2(-8, 8)
+sprite_frames = SubResource("SpriteFrames_3rdom")
+flip_h = true
+
 [node name="Small_attack_Right" type="Area2D" parent="Small_Attack"]
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Small_Attack/Small_attack_Right"]
 position = Vector2(24, 8)
 shape = SubResource("RectangleShape2D_uojpf")
+
+[node name="Smol_Right" type="AnimatedSprite2D" parent="Small_Attack/Small_attack_Right"]
+position = Vector2(24, 8)
+sprite_frames = SubResource("SpriteFrames_3rdom")
 
 [node name="Node2D" type="Node2D" parent="Small_Attack"]
 

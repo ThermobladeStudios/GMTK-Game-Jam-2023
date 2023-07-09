@@ -1,8 +1,8 @@
 [gd_scene load_steps=14 format=3 uid="uid://dxhdlcuv0cfcl"]
 
 [ext_resource type="Texture2D" uid="uid://b2bj6nwj7qtwv" path="res://Player/coin_gold.png" id="2_7lm6j"]
-[ext_resource type="PackedScene" uid="uid://c4y6igyvy3dk1" path="res://Player/button.tscn" id="2_ou7b6"]
-[ext_resource type="PackedScene" uid="uid://fblrrtclo4fj" path="res://Player/next_turn.tscn" id="3_un3st"]
+[ext_resource type="PackedScene" uid="uid://csjr38t0fvhja" path="res://Player/button.tscn" id="2_ou7b6"]
+[ext_resource type="PackedScene" uid="uid://chty3kk6dwgac" path="res://Player/next_turn.tscn" id="3_un3st"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d6hi1"]
 bg_color = Color(0.145098, 0.0745098, 0.101961, 1)
