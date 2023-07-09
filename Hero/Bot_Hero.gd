@@ -1,12 +1,11 @@
 extends Area2D
 
-
-@export var HEALTH = 100
 var Damage = 10
 var File = FileAccess.get_file_as_string("res://Placables/Minions/Minions.json")
 var Json = JSON.parse_string(File)
 
-var Health = Global.Health
+@export var Health = Global.Health
+var Name = "Hero"
 
 var new_velocity : Vector2
 @onready var currPos = self.position
@@ -21,9 +20,9 @@ var beam_cd = 5
 func _ready():
 	navigation_agent.path_desired_distance = 10.0
 	navigation_agent.target_desired_distance = 50.0
-	$ProgressBar.max_value = HEALTH
+	$ProgressBar.max_value = Health
 func _process(delta):
-	$ProgressBar.value = HEALTH
+	$ProgressBar.value = Health
 	
 
 func _physics_process(delta):
@@ -33,6 +32,7 @@ func _physics_process(delta):
 	new_velocity = next_path_position - current_agent_position
 	new_velocity = new_velocity.normalized()
 	new_velocity = new_velocity.round()
+	Global.Map[position.y / 16][position.x / 16] = self
 
 func movement(new_velocity):
 	$Small_Attack/Node2D/Up.visible = false
