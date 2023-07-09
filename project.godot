@@ -10,10 +10,14 @@ config_version=5
 
 [application]
 
-config/name="Gtmk Game Jam 2023"
+config/name="GMTK Game Jam 2023"
 run/main_scene="res://main.tscn"
 config/features=PackedStringArray("4.1", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[autoload]
+
+Global="*res://Global.gd"
 
 [display]
 
