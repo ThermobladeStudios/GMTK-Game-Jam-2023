@@ -4,7 +4,7 @@ var Damage = 10
 var File = FileAccess.get_file_as_string("res://Placables/Minions/Minions.json")
 var Json = JSON.parse_string(File)
 
-@export var Health = Global.Health
+var Health = Global.Health
 var Name = "Hero"
 
 var new_velocity : Vector2
@@ -20,9 +20,9 @@ var beam_cd = 5
 func _ready():
 	navigation_agent.path_desired_distance = 10.0
 	navigation_agent.target_desired_distance = 50.0
-	$ProgressBar.max_value = Health
+	$ProgressBar.max_value = Global.Health
 func _process(delta):
-	$ProgressBar.value = Health
+	$ProgressBar.value = Global.Health
 	
 
 func _physics_process(delta):
@@ -171,4 +171,4 @@ func _on_animated_sprite_2d_2_animation_looped():
 			$Small_Attack/Node2D/Right.visible = false
 			
 func do_damage(damage):
-	Health -= damage
+	Global.Health -= damage

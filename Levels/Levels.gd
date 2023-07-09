@@ -57,7 +57,7 @@ func _unhandled_input(event):
 						SelectedMinion = Tile
 						SelectedMinionPosition = possible_position
 						for x in Json[Tile.Name]["AttackArea"]:
-							if possible_position.x - x[0] >= LeftCorner.x and possible_position.x - x[0] <= RightCorner.x and possible_position.y - x[1] >= LeftCorner.y and possible_position.y - x[1] <= RightCorner.y and Map[possible_position.y - x[1]][possible_position.x - x[0]] == null or Map[possible_position.y - x[1]][possible_position.x - x[0]].Name == "Hero":
+							if possible_position.x - x[0] >= LeftCorner.x and possible_position.x - x[0] <= RightCorner.x and possible_position.y - x[1] >= LeftCorner.y and possible_position.y - x[1] <= RightCorner.y:
 								set_cell(4, possible_position - Vector2i(x[0], x[1]), 6, Vector2i(0, 0), 0)
 				elif SelectedMinion and get_cell_source_id(4, possible_position) == 5:
 					SelectedMinion.position = possible_position * 16
@@ -68,18 +68,19 @@ func _unhandled_input(event):
 					clear_layer(4)
 				elif SelectedMinion and get_cell_source_id(4, possible_position) == 6:
 					SelectedMinion.Attacked = true
-					if Tile.Name == "Hero":
+					if Tile and Tile.Name == "Hero":
 						get_node("/root/Node2D/Hero").do_damage(SelectedMinion.Attack)
 					SelectedMinion = null
 					clear_layer(4)
-				elif Tile == null:
+				elif Global.Selected and Tile == null:
 					clear_layer(4)
 					var obj = spawn_obj.instantiate()
-					obj.Initialize("Skeleton1") 
+					obj.Initialize(Global.Selected)
 					obj.position = local_to_map(get_global_mouse_position()) * 16
 					obj.name = "Minion" + str(Counter)
 					Counter += 1
 					add_child(obj)
+					Global.Selected = null
 					Map[possible_position.y][possible_position.x] = obj
 					SelectedMinion = null
 			else:

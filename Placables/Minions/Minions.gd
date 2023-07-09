@@ -26,6 +26,7 @@ func Initialize(Name):
 func _process(delta):
 	$ProgressBar.value = Health
 	if(Health <= 0):
+		Global.Map[position.y / 16][position.x / 16] = null
 		self.queue_free()
 
 func do_damage(damage):

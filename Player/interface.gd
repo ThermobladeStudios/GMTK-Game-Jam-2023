@@ -4,6 +4,9 @@ var Json = JSON.parse_string(File)
 var hturns = 0
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 
+func _ready():
+	$HeroBar/Health.max_value = Global.Health
+
 func UpdateStats():
 	$InventoryBar/Skeleton1/TextureRect/Label.text = str(Json["Skeleton1"]["Attack"])
 	$InventoryBar/Skeleton1/TextureRect2/Label.text = str(Json["Skeleton1"]["Health"])
@@ -18,6 +21,7 @@ func _process(delta):
 	UpdateStats()
 	$HeroBar/FullHealth.visible = false
 	$CoinCounter/Label.text = str(Global.Coins)
+	$HeroBar/Health.value = Global.Health
 	if Input.is_action_just_pressed("Swap"):
 		$Mode/Obstacle.visible = !$Mode/Obstacle.visible
 		$Mode/Minion.visible = !$Mode/Minion.visible
@@ -41,18 +45,14 @@ func _on_timer_timeout():
 	if(hturns == 3):
 		$Timer.stop()
 
-
 func _on_skeleton_1_pressed():
-	pass # Replace with function body.
-
+	Global.Selected = "Skeleton1"
 
 func _on_skeleton_2_pressed():
-	pass # Replace with function body.
-
+	Global.Selected = "Skeleton2"
 
 func _on_skull_pressed():
-	pass # Replace with function body.
-
+	Global.Selected = "Skull"
 
 func _on_vampire_pressed():
-	pass # Replace with function body.
+	Global.Selected = "Vampire"

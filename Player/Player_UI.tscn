@@ -249,6 +249,7 @@ scale = Vector2(1.5, 1.5)
 texture_normal = ExtResource("12_wd5gj")
 
 [node name="TextureRect" type="TextureRect" parent="InventoryBar/Skeleton2"]
+layout_mode = 0
 offset_left = -4.19048
 offset_top = -16.9524
 offset_right = 19.8095
@@ -266,6 +267,7 @@ text = "16"
 label_settings = SubResource("LabelSettings_xrmho")
 
 [node name="TextureRect2" type="TextureRect" parent="InventoryBar/Skeleton2"]
+layout_mode = 0
 offset_left = -4.19048
 offset_top = -10.2857
 offset_right = 19.8095
@@ -292,6 +294,7 @@ scale = Vector2(1.5, 1.5)
 texture_normal = ExtResource("13_kv4n0")
 
 [node name="TextureRect" type="TextureRect" parent="InventoryBar/Skull"]
+layout_mode = 0
 offset_left = -4.19048
 offset_top = -16.9524
 offset_right = 19.8095
@@ -309,6 +312,7 @@ text = "8"
 label_settings = SubResource("LabelSettings_xrmho")
 
 [node name="TextureRect2" type="TextureRect" parent="InventoryBar/Skull"]
+layout_mode = 0
 offset_left = -4.19048
 offset_top = -10.2857
 offset_right = 19.8095
@@ -335,6 +339,7 @@ scale = Vector2(1.5, 1.5)
 texture_normal = ExtResource("14_ift6e")
 
 [node name="TextureRect" type="TextureRect" parent="InventoryBar/Vampire"]
+layout_mode = 0
 offset_left = -4.19048
 offset_top = -16.9524
 offset_right = 19.8095
@@ -352,6 +357,7 @@ text = "20"
 label_settings = SubResource("LabelSettings_xrmho")
 
 [node name="TextureRect2" type="TextureRect" parent="InventoryBar/Vampire"]
+layout_mode = 0
 offset_left = -4.19048
 offset_top = -10.2857
 offset_right = 19.8095
