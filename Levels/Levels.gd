@@ -72,15 +72,17 @@ func _unhandled_input(event):
 					clear_layer(4)
 					var obj = spawn_obj.instantiate()
 					obj.Initialize("Skeleton1") 
-					Map[possible_position.y][possible_position.x] = obj
 					obj.position = local_to_map(get_global_mouse_position()) * 16
 					obj.name = "Minion" + str(Counter)
 					Counter += 1
 					add_child(obj)
+					Map[possible_position.y][possible_position.x] = obj
 					SelectedMinion = null
 			else:
 				if Map[possible_position.y][possible_position.x] == null:
 					var obj = spawn_obs.instantiate()
-					Map[possible_position.y][possible_position.x] = obj
-					obj.position = local_to_map(get_global_mouse_position())*16
+					obj.position = local_to_map(get_global_mouse_position()) * 16
 					add_child(obj)
+					set_cell(0, possible_position, 1, Vector2i(0, 0), 0)
+					print(get_cell_source_id(0, possible_position))	
+					Map[possible_position.y][possible_position.x] = obj
