@@ -1,8 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://dftuah08wj7sb"]
+[gd_scene load_steps=6 format=3 uid="uid://dftuah08wj7sb"]
 
 [ext_resource type="PackedScene" uid="uid://0hwjm7ci2mai" path="res://Levels/Level.tscn" id="1_q8c1u"]
 [ext_resource type="PackedScene" uid="uid://dw37rc236xqwp" path="res://Hero/Bot_Hero.tscn" id="2_y1r2f"]
-[ext_resource type="PackedScene" uid="uid://cjt4uxnous8l2" path="res://Placables/Minions/Melee_Minion.tscn" id="3_vgp0v"]
 [ext_resource type="PackedScene" uid="uid://dxhdlcuv0cfcl" path="res://Player/Player_UI.tscn" id="4_bvfwu"]
 [ext_resource type="PackedScene" uid="uid://dgnj7afknaajy" path="res://Placables/Obastacles/Obstacle.tscn" id="5_u7o2b"]
 [ext_resource type="Script" path="res://Panning.gd" id="6_qau1g"]
@@ -17,27 +16,6 @@ movement_target = NodePath("../Marker2D")
 
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(304, 48)
-
-[node name="Minion" parent="." instance=ExtResource("3_vgp0v")]
-position = Vector2(192, 48)
-
-[node name="Minion5" parent="." instance=ExtResource("3_vgp0v")]
-position = Vector2(176, 48)
-
-[node name="Minion6" parent="." instance=ExtResource("3_vgp0v")]
-position = Vector2(160, 96)
-
-[node name="Minion7" parent="." instance=ExtResource("3_vgp0v")]
-position = Vector2(240, 64)
-
-[node name="Minion2" parent="." instance=ExtResource("3_vgp0v")]
-position = Vector2(160, 64)
-
-[node name="Minion3" parent="." instance=ExtResource("3_vgp0v")]
-position = Vector2(160, 32)
-
-[node name="Minion4" parent="." instance=ExtResource("3_vgp0v")]
-position = Vector2(160, 80)
 
 [node name="Interface" parent="." instance=ExtResource("4_bvfwu")]
 offset_top = 128.0
