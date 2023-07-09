@@ -6,7 +6,7 @@ var Damage = 10
 var File = FileAccess.get_file_as_string("res://Placables/Minions/Minions.json")
 var Json = JSON.parse_string(File)
 
-
+var Health = 1000
 
 var new_velocity : Vector2
 @onready var currPos = self.position
@@ -73,19 +73,19 @@ func nextTurn():
 			if(dir == 0):
 				$Small_Attack/Node2D/Up.visible = true
 				for x in $Beam_Attack.inarea[dir]:
-					x.do_damage(25)
+					x.do_damage(50)
 			elif(dir == 1):
 				$Small_Attack/Node2D/Down.visible = true
 				for x in $Beam_Attack.inarea[dir]:
-					x.do_damage(25)
+					x.do_damage(50)
 			elif(dir == 2):
 				$Small_Attack/Node2D/Left.visible = true
 				for x in $Beam_Attack.inarea[dir]:
-					x.do_damage(25)
+					x.do_damage(50)
 			elif(dir == 3):
 				$Small_Attack/Node2D/Right.visible = true
 				for x in $Beam_Attack.inarea[dir]:
-					x.do_damage(25)
+					x.do_damage(50)
 			$AnimatedSprite2D2.play()
 			beam_cd = 5
 		elif (deciding_attack() == 0):
@@ -93,19 +93,19 @@ func nextTurn():
 			if(dirs == 3):
 				$Small_Attack/Small_attack_Right/Smol_Right.play()
 				for x in $Small_Attack.inarea[dirs]:
-					x.do_damage(10)
+					x.do_damage(20)
 			elif(dirs == 2):
 				$Small_Attack/Small_attack_Left/Smol_Left.play()
 				for x in $Small_Attack.inarea[dirs]:
-					x.do_damage(10)
+					x.do_damage(20)
 			elif(dirs == 0):
 				$Small_Attack/Small_attack_Up/Smol_up.play()
 				for x in $Small_Attack.inarea[dirs]:
-					x.do_damage(10)
+					x.do_damage(20)
 			elif(dirs == 1):
 				$Small_Attack/Small_attack_Down/Smol_Down.play()
 				for x in $Small_Attack.inarea[dirs]:
-					x.do_damage(10)
+					x.do_damage(20)
 
 			
 			
@@ -115,7 +115,7 @@ func nextTurn():
 func deciding_attack():
 	var satk :float = $Small_Attack.get_weight()
 	var batk :float = $Beam_Attack.get_weight()
-	var tot_minions = get_tree().get_nodes_in_group("minions").size()
+	var tot_minions = get_tree().get_nodes_in_group("Minions").size()
 
 	var sweight = ((satk/tot_minions)*100) + 20
 	var bweight = (batk/tot_minions)*100
@@ -166,3 +166,6 @@ func _on_animated_sprite_2d_2_animation_looped():
 			$AnimatedSprite2D2.position = Vector2(0,0)
 			$AnimatedSprite2D2.stop()
 			$Small_Attack/Node2D/Right.visible = false
+			
+func do_damage(damage):
+	Health -= damage
