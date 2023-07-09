@@ -1,11 +1,9 @@
 [gd_scene load_steps=14 format=3 uid="uid://dxhdlcuv0cfcl"]
 
 [ext_resource type="Texture2D" uid="uid://b2bj6nwj7qtwv" path="res://Player/coin_gold.png" id="2_7lm6j"]
-[ext_resource type="PackedScene" uid="uid://csjr38t0fvhja" path="res://Player/button.tscn" id="2_ou7b6"]
-[ext_resource type="PackedScene" uid="uid://chty3kk6dwgac" path="res://Player/next_turn.tscn" id="3_un3st"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d6hi1"]
-bg_color = Color(0.145098, 0.0745098, 0.101961, 1)
+[ext_resource type="PackedScene" uid="uid://c4y6igyvy3dk1" path="res://Player/button.tscn" id="2_ou7b6"]
+[ext_resource type="Texture2D" uid="uid://bw0vsnf1pe2at" path="res://Player/counter.png" id="3_716ni"]
+[ext_resource type="PackedScene" uid="uid://fblrrtclo4fj" path="res://Player/next_turn.tscn" id="3_un3st"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hxpf4"]
 atlas = ExtResource("2_7lm6j")
@@ -80,39 +78,48 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Panel" type="Panel" parent="."]
-z_index = -1
-layout_mode = 0
-offset_right = 320.0
-offset_bottom = 52.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_d6hi1")
-
-[node name="GridContainer" type="GridContainer" parent="Panel"]
+[node name="GridContainer" type="GridContainer" parent="."]
 layout_mode = 2
-offset_left = 173.0
-offset_top = 3.0
-offset_right = 286.0
-offset_bottom = 48.0
+offset_left = 8.0
+offset_top = 133.0
+offset_right = 121.0
+offset_bottom = 178.0
 columns = 4
 
-[node name="Button" parent="Panel/GridContainer" instance=ExtResource("2_ou7b6")]
+[node name="Button" parent="GridContainer" instance=ExtResource("2_ou7b6")]
 layout_mode = 2
 
-[node name="Button2" parent="Panel/GridContainer" instance=ExtResource("2_ou7b6")]
+[node name="Button2" parent="GridContainer" instance=ExtResource("2_ou7b6")]
 layout_mode = 2
 
-[node name="Button3" parent="Panel/GridContainer" instance=ExtResource("2_ou7b6")]
+[node name="Button3" parent="GridContainer" instance=ExtResource("2_ou7b6")]
 layout_mode = 2
 
 [node name="NextTurn" parent="." instance=ExtResource("3_un3st")]
 layout_mode = 0
-offset_left = 34.0
-offset_top = -43.0
-offset_right = 58.0
-offset_bottom = -19.0
+offset_left = 289.0
+offset_top = 154.0
+offset_right = 313.0
+offset_bottom = 178.0
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(18, 24)
+[node name="Label" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 205.0
+offset_top = 154.0
+offset_right = 284.0
+offset_bottom = 178.0
+texture = ExtResource("3_716ni")
+
+[node name="Label" type="Label" parent="Label"]
+layout_mode = 0
+offset_left = 36.0
+offset_right = 76.0
+offset_bottom = 26.0
+text = "100"
+
+[node name="Coin" type="AnimatedSprite2D" parent="Label"]
+position = Vector2(12, 15)
+scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_cq4ji")
 autoplay = "default"
 frame_progress = 0.0672525
