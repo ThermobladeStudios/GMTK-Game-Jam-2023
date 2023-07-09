@@ -40,6 +40,11 @@ Swap={
 ]
 }
 
+[navigation]
+
+2d/default_cell_size=2
+2d/use_edge_connections=false
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
