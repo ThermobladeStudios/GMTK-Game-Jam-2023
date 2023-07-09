@@ -1,9 +1,16 @@
-[gd_scene load_steps=14 format=3 uid="uid://dxhdlcuv0cfcl"]
+[gd_scene load_steps=22 format=3 uid="uid://dxhdlcuv0cfcl"]
 
+[ext_resource type="Script" path="res://Player/interface.gd" id="1_3yqbv"]
 [ext_resource type="Texture2D" uid="uid://b2bj6nwj7qtwv" path="res://Player/coin_gold.png" id="2_7lm6j"]
-[ext_resource type="PackedScene" uid="uid://c4y6igyvy3dk1" path="res://Player/button.tscn" id="2_ou7b6"]
 [ext_resource type="Texture2D" uid="uid://bw0vsnf1pe2at" path="res://Player/counter.png" id="3_716ni"]
 [ext_resource type="PackedScene" uid="uid://fblrrtclo4fj" path="res://Player/next_turn.tscn" id="3_un3st"]
+[ext_resource type="Texture2D" uid="uid://i1hm8tpckt21" path="res://Player/HeroBarPortrait.png" id="6_xugri"]
+[ext_resource type="PackedScene" uid="uid://cjt4uxnous8l2" path="res://Placables/Minions/Melee_Minion.tscn" id="7_8nfln"]
+[ext_resource type="Texture2D" uid="uid://cawyjhwg76s2x" path="res://Player/Bar.png" id="7_rv6pt"]
+[ext_resource type="PackedScene" uid="uid://dgnj7afknaajy" path="res://Placables/Obastacles/Obstacle.tscn" id="8_6mgpy"]
+[ext_resource type="Texture2D" uid="uid://b2scx6o8tmwra" path="res://Player/Health.png" id="8_sig73"]
+[ext_resource type="Texture2D" uid="uid://cwjic5y8anx34" path="res://Player/mode.png" id="9_eynti"]
+[ext_resource type="Texture2D" uid="uid://bla0ppycvmdoc" path="res://Player/Inventory Bar.png" id="10_hguc1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hxpf4"]
 atlas = ExtResource("2_7lm6j")
@@ -69,6 +76,9 @@ animations = [{
 "speed": 7.0
 }]
 
+[sub_resource type="LabelSettings" id="LabelSettings_grhpr"]
+font_size = 12
+
 [node name="Interface" type="Control"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 3
@@ -77,49 +87,94 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="GridContainer" type="GridContainer" parent="."]
-layout_mode = 2
-offset_left = 8.0
-offset_top = 133.0
-offset_right = 121.0
-offset_bottom = 178.0
-columns = 4
-
-[node name="Button" parent="GridContainer" instance=ExtResource("2_ou7b6")]
-layout_mode = 2
-
-[node name="Button2" parent="GridContainer" instance=ExtResource("2_ou7b6")]
-layout_mode = 2
-
-[node name="Button3" parent="GridContainer" instance=ExtResource("2_ou7b6")]
-layout_mode = 2
+script = ExtResource("1_3yqbv")
 
 [node name="NextTurn" parent="." instance=ExtResource("3_un3st")]
 layout_mode = 0
-offset_left = 289.0
-offset_top = 154.0
-offset_right = 313.0
-offset_bottom = 178.0
+offset_left = 4.0
+offset_top = 24.0
+offset_right = 28.0
+offset_bottom = 48.0
+scale = Vector2(0.7, 0.7)
 
-[node name="Label" type="TextureRect" parent="."]
+[node name="CoinCounter" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = 205.0
-offset_top = 154.0
-offset_right = 284.0
-offset_bottom = 178.0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 83.0
+offset_bottom = 28.0
+scale = Vector2(0.7, 0.7)
 texture = ExtResource("3_716ni")
+stretch_mode = 2
 
-[node name="Label" type="Label" parent="Label"]
+[node name="Label" type="Label" parent="CoinCounter"]
 layout_mode = 0
-offset_left = 36.0
-offset_right = 76.0
+offset_left = 26.25
+offset_right = 75.25
 offset_bottom = 26.0
-text = "100"
+text = "999"
+horizontal_alignment = 1
 
-[node name="Coin" type="AnimatedSprite2D" parent="Label"]
+[node name="Coin" type="AnimatedSprite2D" parent="CoinCounter"]
 position = Vector2(12, 15)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_cq4ji")
 autoplay = "default"
 frame_progress = 0.0672525
+
+[node name="HeroBar" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 65.0
+offset_top = 4.0
+offset_right = 425.0
+offset_bottom = 68.0
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("6_xugri")
+stretch_mode = 2
+
+[node name="Health" type="TextureProgressBar" parent="HeroBar"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 2.0
+offset_right = 299.0
+offset_bottom = 22.0
+fill_mode = 1
+texture_under = ExtResource("7_rv6pt")
+texture_progress = ExtResource("8_sig73")
+
+[node name="InventoryBar" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 146.0
+offset_right = 204.0
+offset_bottom = 186.0
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("10_hguc1")
+
+[node name="Mode" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 150.0
+offset_top = 145.0
+offset_right = 245.0
+offset_bottom = 189.0
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("9_eynti")
+
+[node name="Label" type="Label" parent="Mode"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 13.0
+offset_right = 49.0
+offset_bottom = 33.0
+text = "Mode
+"
+label_settings = SubResource("LabelSettings_grhpr")
+horizontal_alignment = 1
+
+[node name="Obstacle" parent="Mode" instance=ExtResource("8_6mgpy")]
+position = Vector2(61, 10)
+scale = Vector2(1.5, 1.5)
+
+[node name="Minion" parent="Mode" instance=ExtResource("7_8nfln")]
+position = Vector2(61, 10)
+scale = Vector2(1.5, 1.5)

@@ -15,10 +15,8 @@ region_rect = Rect2(24, 0, 24, 24)
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tub0k"]
 
 [node name="Button" type="Button"]
-offset_left = -34.0
-offset_top = 76.0
-offset_right = -10.0
-offset_bottom = 100.0
+offset_right = 24.0
+offset_bottom = 24.0
 theme_override_styles/normal = SubResource("StyleBoxTexture_8n6ou")
 theme_override_styles/hover = SubResource("StyleBoxTexture_8n6ou")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_g73gn")
