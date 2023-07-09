@@ -1,9 +1,7 @@
-[gd_scene load_steps=23 format=3 uid="uid://cjt4uxnous8l2"]
+[gd_scene load_steps=21 format=3 uid="uid://cjt4uxnous8l2"]
 
 [ext_resource type="Script" path="res://Placables/Minions/Minions.gd" id="1_xl2vd"]
 [ext_resource type="Texture2D" uid="uid://dn8k0vkvassao" path="res://Placables/Minions/minions.png" id="2_h714t"]
-[ext_resource type="Texture2D" uid="uid://ckl0jnxvvr8l2" path="res://Placables/Minions/MinionHealthEmpty.png" id="3_g2igm"]
-[ext_resource type="Texture2D" uid="uid://c45yx5f0kkhuc" path="res://Placables/Minions/MinionHealth.png" id="4_4vx4c"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aegne"]
 size = Vector2(16, 16)
@@ -169,11 +167,9 @@ scale = Vector2(0.5, 0.5)
 theme_override_font_sizes/font_size = 16
 text = "10"
 
-[node name="ProgressBar" type="TextureProgressBar" parent="."]
-offset_left = 2.0
-offset_top = 16.0
-offset_right = 25.0
-offset_bottom = 28.0
-scale = Vector2(0.5, 0.5)
-texture_under = ExtResource("3_g2igm")
-texture_progress = ExtResource("4_4vx4c")
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = -2.0
+offset_top = 17.0
+offset_right = 18.0
+offset_bottom = 21.0
+show_percentage = false
