@@ -15,7 +15,6 @@ func _ready():
 	pass # Replace with function body.
 
 func Initialize(Name):
-	print(Name)
 	$AnimatedSprite2D.play(Name)
 	self.Name = Name
 	Name = Json[Name]

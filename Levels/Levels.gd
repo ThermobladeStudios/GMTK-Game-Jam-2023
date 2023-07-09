@@ -1,23 +1,24 @@
 extends TileMap
 
 var LastSelectedTile = Vector2(0, 0)
-var LeftCorner = Vector2i(1, 1)
-var RightCorner = Vector2i(18, 6)
+var LeftCorner = Vector2i(2, 2)
+var RightCorner = Vector2i(17, 8)
 var spawn_obj = preload("res://Placables/Minions/Melee_Minion.tscn")
-var X_COORD = 18
-var Y_COORD = 6
+var X_COORD = 17
+var Y_COORD = 8
 var curr_x = 0
 var curr_y = 0
 var matrix
 var File = FileAccess.get_file_as_string("res://Placables/Minions/Minions.json")
 var Json = JSON.parse_string(File)
+var MinionSelected= false
 
 func create_map(h, w):
 	var map = []
 
-	for x in range(h+1):
+	for x in range(h+2):
 		var col = []
-		col.resize(w+1)
+		col.resize(w+2)
 		map.append(col)
 
 	return map
@@ -30,7 +31,7 @@ func _process(delta):
 	
 	var SelectedTile = local_to_map(get_global_mouse_position())
 	if SelectedTile.x >= LeftCorner.x and SelectedTile.x <= RightCorner.x and SelectedTile.y >= LeftCorner.y and SelectedTile.y <= RightCorner.y:
-		set_cell(3, SelectedTile, 3, Vector2i(0, 0), 0)
+		set_cell(3, SelectedTile, 4, Vector2i(0, 0), 0)
 
 	LastSelectedTile = SelectedTile
 
@@ -39,19 +40,26 @@ func _unhandled_input(event):
 		if event.pressed:
 			clear_layer(4)
 			var possible_position = local_to_map(get_global_mouse_position())
-			if possible_position.x > X_COORD or possible_position.y > Y_COORD or possible_position.x <=0 or possible_position.y <= 0:
+			var Tile = matrix[possible_position.y][possible_position.x]
+			if possible_position.x > X_COORD or possible_position.y > Y_COORD or possible_position.x <= 1 or possible_position.y <= 1:
 				pass
-			elif matrix[possible_position.y][possible_position.x] == null:
+			elif Tile == null:
 				var obj = spawn_obj.instantiate()
 				obj.Initialize("Skeleton1") 
-				matrix[possible_position.y][possible_position.x] = obj.Name
-				obj.position = local_to_map(get_global_mouse_position())*16
+				matrix[possible_position.y][possible_position.x] = obj
+				obj.position = local_to_map(get_global_mouse_position()) * 16
 				add_child(obj)
-			elif matrix[possible_position.y][possible_position.x] in Json:
-				for x in Json[matrix[possible_position.y][possible_position.x]]["AttackArea"]:
-					set_cell(4, possible_position - Vector2i(x[0], x[1]), 4, Vector2i(0, 0), 0)
-					clear_layer(4)
-				for x in Json[matrix[possible_position.y][possible_position.x]]["MoveArea"]:
-					set_cell(4, possible_position - Vector2i(x[0], x[1]), 4, Vector2i(0, 0), 0)
+			elif Tile.Name in Json:
+				if Tile.Moved == false:
+					for x in Json[Tile.Name]["AttackArea"]:
+						if possible_position.x - x[0] >= LeftCorner.x and possible_position.x - x[0] <= RightCorner.x and possible_position.y - x[1] >= LeftCorner.y and possible_position.y - x[1] <= RightCorner.y and matrix[possible_position.y - x[1]][possible_position.x - x[0]] == null:
+							set_cell(4, possible_position - Vector2i(x[0], x[1]), 5, Vector2i(0, 0), 0)
+						Tile.Moved = true
+				elif Tile.Attacked == false:
+					for x in Json[Tile.Name ]["AttackArea"]:
+						if possible_position.x - x[0] >= LeftCorner.x and possible_position.x - x[0] <= RightCorner.x and possible_position.y - x[1] >= LeftCorner.y and possible_position.y - x[1] <= RightCorner.y and matrix[possible_position.y - x[1]][possible_position.x - x[0]] == null:
+							set_cell(4, possible_position - Vector2i(x[0], x[1]), 5, Vector2i(0, 0), 0)
+						Tile.Attacked = true
+				elif MinionSelected and get_cell_source_id(4, possible_position) == 5:
+					Tile.Moved = true
 					
-			#elif matrix[possible_position.y][possible_position.x] == "Skeleton2"

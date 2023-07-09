@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://dftuah08wj7sb"]
+[gd_scene load_steps=6 format=3 uid="uid://04w7akrfllgh"]
 
 [ext_resource type="PackedScene" uid="uid://0hwjm7ci2mai" path="res://Levels/Level.tscn" id="1_q8c1u"]
 [ext_resource type="PackedScene" uid="uid://dw37rc236xqwp" path="res://Hero/Bot_Hero.tscn" id="2_y1r2f"]
@@ -18,9 +18,9 @@ movement_target = NodePath("../Marker2D")
 position = Vector2(304, 48)
 
 [node name="Interface" parent="." instance=ExtResource("4_bvfwu")]
-offset_top = 128.0
+offset_top = 163.0
 offset_right = 200.0
-offset_bottom = 128.0
+offset_bottom = 163.0
 
 [node name="Node2D" parent="." instance=ExtResource("5_u7o2b")]
 position = Vector2(144, 64)
