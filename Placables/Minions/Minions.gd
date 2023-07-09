@@ -21,6 +21,14 @@ func Initialize(Name):
 	Health = Name["Health"]
 	Attack = Name["Attack"]
 	#Defense = Name["Defense"]
+	$ProgressBar.max_value = Health
+
+func _process(delta):
+	$ProgressBar.value = Health
+	if(Health <= 0):
+		self.queue_free()
+	
 
 func do_damage(damage):
 	Health -= damage
+
