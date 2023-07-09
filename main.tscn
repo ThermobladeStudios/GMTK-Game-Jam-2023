@@ -17,11 +17,6 @@ movement_target = NodePath("../Marker2D")
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(288, 80)
 
-[node name="Interface" parent="." instance=ExtResource("4_bvfwu")]
-offset_top = 163.0
-offset_right = 200.0
-offset_bottom = 163.0
-
 [node name="Node2D" parent="." instance=ExtResource("5_u7o2b")]
 position = Vector2(144, 64)
 
@@ -32,3 +27,10 @@ limit_top = -90
 limit_right = 480
 limit_bottom = 270
 script = ExtResource("6_qau1g")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Interface" parent="CanvasLayer" instance=ExtResource("4_bvfwu")]
+offset_top = 163.0
+offset_right = 200.0
+offset_bottom = 163.0
