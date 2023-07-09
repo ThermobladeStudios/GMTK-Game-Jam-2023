@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://dxhdlcuv0cfcl"]
+[gd_scene load_steps=32 format=3 uid="uid://dxhdlcuv0cfcl"]
 
 [ext_resource type="Script" path="res://Player/interface.gd" id="1_3yqbv"]
 [ext_resource type="Texture2D" uid="uid://b2bj6nwj7qtwv" path="res://Player/coin_gold.png" id="2_7lm6j"]
@@ -13,7 +13,9 @@
 [ext_resource type="Texture2D" uid="uid://bla0ppycvmdoc" path="res://Player/Inventory Bar.png" id="10_hguc1"]
 [ext_resource type="Texture2D" uid="uid://dyggcre5xgesu" path="res://Player/ObstacleIcon.png" id="11_07xh0"]
 [ext_resource type="Texture2D" uid="uid://bxnu4wpxanj0w" path="res://Player/Skeleton1Icon.png" id="11_hubpl"]
+[ext_resource type="Texture2D" uid="uid://carsrpr52llov" path="res://Player/Damage.png" id="12_3fp5y"]
 [ext_resource type="Texture2D" uid="uid://daabjenrrk564" path="res://Player/Skeleton2Icon.png" id="12_wd5gj"]
+[ext_resource type="Texture2D" uid="uid://dl2w222tl4kr2" path="res://Player/HP.png" id="13_jayxs"]
 [ext_resource type="Texture2D" uid="uid://bhhf035kqxubq" path="res://Player/SkullIcon.png" id="13_kv4n0"]
 [ext_resource type="Texture2D" uid="uid://dxsth84cddpeu" path="res://Player/VampireIcon.png" id="14_ift6e"]
 
@@ -84,6 +86,14 @@ animations = [{
 "name": &"default",
 "speed": 7.0
 }]
+
+[sub_resource type="LabelSettings" id="LabelSettings_xrmho"]
+font = ExtResource("4_b657h")
+font_size = 14
+
+[sub_resource type="LabelSettings" id="LabelSettings_qty5h"]
+font = ExtResource("4_b657h")
+font_size = 14
 
 [sub_resource type="LabelSettings" id="LabelSettings_grhpr"]
 font = ExtResource("4_b657h")
@@ -186,39 +196,177 @@ texture = ExtResource("10_hguc1")
 
 [node name="Skeleton1" type="TextureButton" parent="InventoryBar"]
 layout_mode = 0
-offset_left = 23.0
-offset_top = 9.0
-offset_right = 39.0
-offset_bottom = 25.0
+offset_left = 22.0
+offset_top = 4.0
+offset_right = 38.0
+offset_bottom = 20.0
 scale = Vector2(1.5, 1.5)
 texture_normal = ExtResource("11_hubpl")
 
+[node name="TextureRect" type="TextureRect" parent="InventoryBar/Skeleton1"]
+layout_mode = 0
+offset_left = -4.19048
+offset_top = -16.9524
+offset_right = 19.8095
+offset_bottom = 7.04761
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("12_3fp5y")
+
+[node name="Label" type="Label" parent="InventoryBar/Skeleton1/TextureRect"]
+layout_mode = 0
+offset_left = 30.4762
+offset_top = 3.80954
+offset_right = 70.4762
+offset_bottom = 26.8095
+text = "12"
+label_settings = SubResource("LabelSettings_xrmho")
+
+[node name="TextureRect2" type="TextureRect" parent="InventoryBar/Skeleton1"]
+layout_mode = 0
+offset_left = -4.19048
+offset_top = -10.2857
+offset_right = 19.8095
+offset_bottom = 13.7143
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("13_jayxs")
+
+[node name="Label" type="Label" parent="InventoryBar/Skeleton1/TextureRect2"]
+layout_mode = 0
+offset_left = 30.4762
+offset_top = 3.80945
+offset_right = 70.4762
+offset_bottom = 26.8094
+text = "25"
+label_settings = SubResource("LabelSettings_qty5h")
+
 [node name="Skeleton2" type="TextureButton" parent="InventoryBar"]
 layout_mode = 0
-offset_left = 67.0
-offset_top = 9.0
-offset_right = 83.0
-offset_bottom = 25.0
+offset_left = 66.0
+offset_top = 4.0
+offset_right = 82.0
+offset_bottom = 20.0
 scale = Vector2(1.5, 1.5)
 texture_normal = ExtResource("12_wd5gj")
+
+[node name="TextureRect" type="TextureRect" parent="InventoryBar/Skeleton2"]
+offset_left = -4.19048
+offset_top = -16.9524
+offset_right = 19.8095
+offset_bottom = 7.04761
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("12_3fp5y")
+
+[node name="Label" type="Label" parent="InventoryBar/Skeleton2/TextureRect"]
+layout_mode = 0
+offset_left = 30.4762
+offset_top = 3.80954
+offset_right = 70.4762
+offset_bottom = 26.8095
+text = "16"
+label_settings = SubResource("LabelSettings_xrmho")
+
+[node name="TextureRect2" type="TextureRect" parent="InventoryBar/Skeleton2"]
+offset_left = -4.19048
+offset_top = -10.2857
+offset_right = 19.8095
+offset_bottom = 13.7143
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("13_jayxs")
+
+[node name="Label" type="Label" parent="InventoryBar/Skeleton2/TextureRect2"]
+layout_mode = 0
+offset_left = 30.4762
+offset_top = 3.80945
+offset_right = 70.4762
+offset_bottom = 26.8094
+text = "35"
+label_settings = SubResource("LabelSettings_qty5h")
 
 [node name="Skull" type="TextureButton" parent="InventoryBar"]
 layout_mode = 0
 offset_left = 110.0
-offset_top = 9.0
+offset_top = 4.0
 offset_right = 126.0
-offset_bottom = 25.0
+offset_bottom = 20.0
 scale = Vector2(1.5, 1.5)
 texture_normal = ExtResource("13_kv4n0")
+
+[node name="TextureRect" type="TextureRect" parent="InventoryBar/Skull"]
+offset_left = -4.19048
+offset_top = -16.9524
+offset_right = 19.8095
+offset_bottom = 7.04761
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("12_3fp5y")
+
+[node name="Label" type="Label" parent="InventoryBar/Skull/TextureRect"]
+layout_mode = 0
+offset_left = 30.4762
+offset_top = 3.80954
+offset_right = 70.4762
+offset_bottom = 26.8095
+text = "8"
+label_settings = SubResource("LabelSettings_xrmho")
+
+[node name="TextureRect2" type="TextureRect" parent="InventoryBar/Skull"]
+offset_left = -4.19048
+offset_top = -10.2857
+offset_right = 19.8095
+offset_bottom = 13.7143
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("13_jayxs")
+
+[node name="Label" type="Label" parent="InventoryBar/Skull/TextureRect2"]
+layout_mode = 0
+offset_left = 30.4762
+offset_top = 3.80945
+offset_right = 70.4762
+offset_bottom = 26.8094
+text = "15"
+label_settings = SubResource("LabelSettings_qty5h")
 
 [node name="Vampire" type="TextureButton" parent="InventoryBar"]
 layout_mode = 0
 offset_left = 154.0
-offset_top = 9.0
+offset_top = 4.0
 offset_right = 170.0
-offset_bottom = 25.0
+offset_bottom = 20.0
 scale = Vector2(1.5, 1.5)
 texture_normal = ExtResource("14_ift6e")
+
+[node name="TextureRect" type="TextureRect" parent="InventoryBar/Vampire"]
+offset_left = -4.19048
+offset_top = -16.9524
+offset_right = 19.8095
+offset_bottom = 7.04761
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("12_3fp5y")
+
+[node name="Label" type="Label" parent="InventoryBar/Vampire/TextureRect"]
+layout_mode = 0
+offset_left = 30.4762
+offset_top = 3.80954
+offset_right = 70.4762
+offset_bottom = 26.8095
+text = "20"
+label_settings = SubResource("LabelSettings_xrmho")
+
+[node name="TextureRect2" type="TextureRect" parent="InventoryBar/Vampire"]
+offset_left = -4.19048
+offset_top = -10.2857
+offset_right = 19.8095
+offset_bottom = 13.7143
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("13_jayxs")
+
+[node name="Label" type="Label" parent="InventoryBar/Vampire/TextureRect2"]
+layout_mode = 0
+offset_left = 30.4762
+offset_top = 3.80945
+offset_right = 70.4762
+offset_bottom = 26.8094
+text = "12"
+label_settings = SubResource("LabelSettings_qty5h")
 
 [node name="Mode" type="TextureRect" parent="."]
 layout_mode = 0
@@ -263,4 +411,8 @@ texture = ExtResource("11_07xh0")
 [node name="Timer" type="Timer" parent="."]
 
 [connection signal="pressed" from="NextTurn" to="." method="_on_next_turn_pressed"]
+[connection signal="pressed" from="InventoryBar/Skeleton1" to="." method="_on_skeleton_1_pressed"]
+[connection signal="pressed" from="InventoryBar/Skeleton2" to="." method="_on_skeleton_2_pressed"]
+[connection signal="pressed" from="InventoryBar/Skull" to="." method="_on_skull_pressed"]
+[connection signal="pressed" from="InventoryBar/Vampire" to="." method="_on_vampire_pressed"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
