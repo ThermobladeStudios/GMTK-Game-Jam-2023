@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://cjt4uxnous8l2"]
+[gd_scene load_steps=22 format=3 uid="uid://cjt4uxnous8l2"]
 
 [ext_resource type="Script" path="res://Placables/Minions/Minions.gd" id="1_xl2vd"]
 [ext_resource type="Texture2D" uid="uid://dn8k0vkvassao" path="res://Placables/Minions/minions.png" id="2_h714t"]
@@ -141,6 +141,13 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u3pth"]
+bg_color = Color(1, 0.270588, 0.337255, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
 [node name="Minion" type="Area2D" groups=["Minions"]]
 script = ExtResource("1_xl2vd")
 
@@ -172,4 +179,5 @@ offset_left = -2.0
 offset_top = 17.0
 offset_right = 18.0
 offset_bottom = 21.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_u3pth")
 show_percentage = false
